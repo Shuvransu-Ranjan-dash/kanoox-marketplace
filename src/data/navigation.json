@@ -1,0 +1,153 @@
+{
+  "topBar": {
+    "phone": "+592 225 9000",
+    "email": "support@kanoox.com",
+    "links": [
+      { "id": "track", "label": "Track Order", "href": "#track-order" },
+      { "id": "support", "label": "Customer Support", "href": "#support" },
+      { "id": "stores", "label": "Store Locations", "href": "#stores" }
+    ]
+  },
+  "mainNav": [
+    { "id": "all-categories", "label": "All Departments", "href": "#categories", "highlight": true },
+    { "id": "deals", "label": "Flash Deals", "href": "#deals", "badge": "HOT" },
+    { "id": "featured", "label": "Featured Products", "href": "#featured" },
+    { "id": "popular", "label": "Best Sellers", "href": "#popular" },
+    { "id": "appliances", "label": "Appliances", "href": "#appliances" },
+    { "id": "electronics", "label": "Electronics", "href": "#electronics" },
+    { "id": "brands", "label": "Top Brands", "href": "#brands" }
+  ],
+  "megaMenu": [
+    {
+      "id": "electronics-menu",
+      "title": "Electronics & Computers",
+      "slug": "electronics",
+      "icon": "Laptop",
+      "featuredProduct": {
+        "name": "Sony WH-1000XM5 ANC Headphones",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
+        "price": 78500,
+        "link": "#prod-001"
+      },
+      "subSections": [
+        {
+          "title": "Audio & Sound",
+          "links": [
+            { "name": "Wireless Headphones", "href": "#", "isNew": false },
+            { "name": "Bluetooth Speakers", "href": "#", "isNew": true },
+            { "name": "Soundbars & Home Audio", "href": "#", "isNew": false },
+            { "name": "Noise Cancelling Earbuds", "href": "#", "isNew": false }
+          ]
+        },
+        {
+          "title": "Computers & Tablets",
+          "links": [
+            { "name": "Apple MacBook Pro & Air", "href": "#", "isNew": true },
+            { "name": "Gaming Laptops", "href": "#", "isNew": false },
+            { "name": "Tablets & iPads", "href": "#", "isNew": false },
+            { "name": "Monitors & Accessories", "href": "#", "isNew": false }
+          ]
+        },
+        {
+          "title": "Smart Tech & Wearables",
+          "links": [
+            { "name": "Smartwatches & Bands", "href": "#", "isNew": false },
+            { "name": "Home Security Cameras", "href": "#", "isNew": true },
+            { "name": "Power Banks & Fast Chargers", "href": "#", "isNew": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "appliances-menu",
+      "title": "Home Appliances",
+      "slug": "appliances",
+      "icon": "Refrigerator",
+      "featuredProduct": {
+        "name": "Ninja Auto-iQ Professional Blender",
+        "image": "https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=400&q=80",
+        "price": 32000,
+        "link": "#prod-004"
+      },
+      "subSections": [
+        {
+          "title": "Kitchen Appliances",
+          "links": [
+            { "name": "Air Fryers & Microwaves", "href": "#", "isNew": true },
+            { "name": "Blenders & Food Processors", "href": "#", "isNew": false },
+            { "name": "Espresso & Coffee Makers", "href": "#", "isNew": false },
+            { "name": "Toasters & Electric Kettles", "href": "#", "isNew": false }
+          ]
+        },
+        {
+          "title": "Large Cooling & Washing",
+          "links": [
+            { "name": "French Door Refrigerators", "href": "#", "isNew": false },
+            { "name": "Inverter Air Conditioners", "href": "#", "isNew": true },
+            { "name": "Front-load Washing Machines", "href": "#", "isNew": false }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fashion-menu",
+      "title": "Fashion & Lifestyle",
+      "slug": "fashion",
+      "icon": "Shirt",
+      "subSections": [
+        {
+          "title": "Men's Style",
+          "links": [
+            { "name": "Sneakers & Athletic Shoes", "href": "#", "isNew": true },
+            { "name": "Formal & Casual Shirts", "href": "#", "isNew": false },
+            { "name": "Denim & Trousers", "href": "#", "isNew": false }
+          ]
+        },
+        {
+          "title": "Watches & Accessories",
+          "links": [
+            { "name": "Chronograph Watches", "href": "#", "isNew": true },
+            { "name": "Leather Wallets & Belts", "href": "#", "isNew": false },
+            { "name": "Sunglasses & Eyewear", "href": "#", "isNew": false }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "about": "KanooX Marketplace is Guyana and the Caribbean's premier online shopping destination, providing authentic brand electronics, home appliances, groceries, and fashion with guaranteed fast delivery.",
+    "columns": [
+      {
+        "title": "Shop Departments",
+        "links": [
+          { "label": "Consumer Electronics", "href": "#electronics" },
+          { "label": "Home Appliances", "href": "#appliances" },
+          { "label": "Smart Living & Audio", "href": "#electronics" },
+          { "label": "Men & Women Fashion", "href": "#fashion" },
+          { "label": "Supermarket & Groceries", "href": "#groceries" },
+          { "label": "Gaming & Consoles", "href": "#gaming" }
+        ]
+      },
+      {
+        "title": "Customer Service",
+        "links": [
+          { "label": "Help & Support Center", "href": "#help" },
+          { "label": "Track Your Delivery", "href": "#track" },
+          { "label": "Returns & Warranty Policy", "href": "#returns" },
+          { "label": "Shipping & Payment Rates", "href": "#shipping" },
+          { "label": "Authorized Service Centers", "href": "#service" }
+        ]
+      },
+      {
+        "title": "About KanooX",
+        "links": [
+          { "label": "About Our Marketplace", "href": "#about" },
+          { "label": "Sell on KanooX", "href": "#sell" },
+          { "label": "Careers & Press", "href": "#careers" },
+          { "label": "Corporate Partnerships", "href": "#partners" },
+          { "label": "Privacy Policy & Terms", "href": "#privacy" }
+        ]
+      }
+    ]
+  }
+}

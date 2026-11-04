@@ -1,0 +1,125 @@
+[
+  {
+    "id": "electronics",
+    "name": "Consumer Electronics",
+    "slug": "consumer-electronics",
+    "icon": "Smartphone",
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 240,
+    "featured": true,
+    "badge": "Popular",
+    "subcategories": [
+      { "id": "smartphones", "name": "Smartphones & Tablets", "slug": "smartphones", "itemCount": 85 },
+      { "id": "laptops", "name": "Laptops & Computers", "slug": "laptops", "itemCount": 62 },
+      { "id": "audio", "name": "Headphones & Audio", "slug": "audio", "itemCount": 48 },
+      { "id": "cameras", "name": "Cameras & Drones", "slug": "cameras", "itemCount": 25 },
+      { "id": "accessories", "name": "Power Banks & Cables", "slug": "accessories", "itemCount": 20 }
+    ]
+  },
+  {
+    "id": "appliances",
+    "name": "Home Appliances",
+    "slug": "home-appliances",
+    "icon": "Refrigerator",
+    "image": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 185,
+    "featured": true,
+    "badge": "Hot",
+    "subcategories": [
+      { "id": "refrigerators", "name": "Refrigerators & Freezers", "slug": "refrigerators", "itemCount": 35 },
+      { "id": "microwaves", "name": "Microwaves & Ovens", "slug": "microwaves", "itemCount": 42 },
+      { "id": "washing-machines", "name": "Washers & Dryers", "slug": "washers", "itemCount": 28 },
+      { "id": "air-conditioners", "name": "ACs & Air Coolers", "slug": "air-conditioners", "itemCount": 40 },
+      { "id": "kitchen-appliances", "name": "Blenders & Juicers", "slug": "blenders", "itemCount": 40 }
+    ]
+  },
+  {
+    "id": "fashion",
+    "name": "Men & Women Fashion",
+    "slug": "fashion",
+    "icon": "Shirt",
+    "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 320,
+    "featured": true,
+    "badge": "New",
+    "subcategories": [
+      { "id": "men-apparel", "name": "Men's Clothing", "slug": "mens-clothing", "itemCount": 110 },
+      { "id": "women-apparel", "name": "Women's Clothing", "slug": "womens-clothing", "itemCount": 130 },
+      { "id": "footwear", "name": "Shoes & Sneakers", "slug": "footwear", "itemCount": 45 },
+      { "id": "watches-jewelry", "name": "Watches & Jewelry", "slug": "watches", "itemCount": 35 }
+    ]
+  },
+  {
+    "id": "beauty",
+    "name": "Beauty & Personal Care",
+    "slug": "beauty-personal-care",
+    "icon": "Sparkles",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 150,
+    "featured": true,
+    "subcategories": [
+      { "id": "skincare", "name": "Skincare & Moisturizers", "slug": "skincare", "itemCount": 60 },
+      { "id": "haircare", "name": "Haircare & Styling", "slug": "haircare", "itemCount": 45 },
+      { "id": "fragrances", "name": "Perfumes & Cologne", "slug": "fragrances", "itemCount": 45 }
+    ]
+  },
+  {
+    "id": "groceries",
+    "name": "Supermarket & Groceries",
+    "slug": "supermarket-groceries",
+    "icon": "ShoppingBag",
+    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 410,
+    "featured": true,
+    "badge": "Daily Deals",
+    "subcategories": [
+      { "id": "beverages", "name": "Beverages & Juices", "slug": "beverages", "itemCount": 120 },
+      { "id": "snacks", "name": "Packaged Snacks", "slug": "snacks", "itemCount": 90 },
+      { "id": "pantry", "name": "Rice, Pasta & Pantry", "slug": "pantry", "itemCount": 110 },
+      { "id": "cleaning", "name": "Household Cleaning", "slug": "cleaning", "itemCount": 90 }
+    ]
+  },
+  {
+    "id": "gaming",
+    "name": "Gaming & Consoles",
+    "slug": "gaming-consoles",
+    "icon": "Gamepad2",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 95,
+    "featured": true,
+    "subcategories": [
+      { "id": "consoles", "name": "PlayStation & Xbox", "slug": "consoles", "itemCount": 25 },
+      { "id": "game-titles", "name": "Games & Digital Codes", "slug": "games", "itemCount": 45 },
+      { "id": "gaming-gear", "name": "Gaming Chairs & Desks", "slug": "gear", "itemCount": 25 }
+    ]
+  },
+  {
+    "id": "automotive",
+    "name": "Automotive & Tools",
+    "slug": "automotive-tools",
+    "icon": "Car",
+    "image": "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 80,
+    "featured": false,
+    "subcategories": [
+      { "id": "car-care", "name": "Car Wash & Polish", "slug": "car-care", "itemCount": 30 },
+      { "id": "car-electronics", "name": "Dashcams & Audio", "slug": "car-electronics", "itemCount": 25 },
+      { "id": "tools", "name": "Tire Inflators & Tools", "slug": "tools", "itemCount": 25 }
+    ]
+  },
+  {
+    "id": "home-garden",
+    "name": "Home, Living & Garden",
+    "slug": "home-living-garden",
+    "icon": "Home",
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80",
+    "itemCount": 160,
+    "featured": false,
+    "subcategories": [
+      { "id": "furniture", "name": "Living Room Furniture", "slug": "furniture", "itemCount": 50 },
+      { "id": "bedding", "name": "Bedding & Mattresses", "slug": "bedding", "itemCount": 40 },
+      { "id": "lighting", "name": "Smart Lighting & Lamps", "slug": "lighting", "itemCount": 40 },
+      { "id": "garden", "name": "Patio & Gardening", "slug": "garden", "itemCount": 30 }
+    ]
+  }
+]
