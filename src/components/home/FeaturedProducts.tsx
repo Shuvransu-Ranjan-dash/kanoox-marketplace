@@ -47,7 +47,7 @@ export default function FeaturedProducts() {
               : "Authentic electronics, fashion, household appliances & events with Caribbean warranty"
           }
           viewAllLink="#products"
-          viewAllText={selectedCategory ? "View Catalog" : "View All Featured"}
+          viewAllText="View all"
         />
 
         {/* Active Filter Pill Bar (Shown when a category is selected) */}

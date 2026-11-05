@@ -39,6 +39,10 @@ export default function ProductCarousel({ products, className }: ProductCarousel
       {/* Scrollable Container */}
       <div
         ref={scrollContainerRef}
+        style={{
+          WebkitOverflowScrolling: "touch",
+          touchAction: "pan-x pan-y",
+        }}
         className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth no-scrollbar py-2 px-1 snap-x snap-mandatory"
       >
         {products.map((product) => (

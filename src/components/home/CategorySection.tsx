@@ -117,7 +117,7 @@ export default function CategorySection({
         onMouseLeave={handleMouseUp}
         style={{
           WebkitOverflowScrolling: "touch",
-          touchAction: "pan-y",
+          touchAction: "pan-x pan-y",
         }}
         className={`w-full flex items-center gap-2 sm:gap-2.5 md:gap-3 lg:gap-3.5 xl:gap-4 overflow-x-auto no-scrollbar ${
           isCompact ? "py-1" : "py-2"

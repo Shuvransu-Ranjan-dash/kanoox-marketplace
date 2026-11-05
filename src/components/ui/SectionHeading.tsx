@@ -17,29 +17,29 @@ export default function SectionHeading({
   subtitle,
   badge,
   viewAllLink,
-  viewAllText = "View All",
+  viewAllText = "View all",
   action,
   className,
 }: SectionHeadingProps) {
   return (
-    <div className={cn("flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-border/80 gap-3", className)}>
-      <div>
+    <div className={cn("flex items-start sm:items-end justify-between gap-3 mb-5 pb-3 border-b border-border/80 select-none", className)}>
+      <div className="min-w-0 flex-1">
         {badge && (
-          <span className="inline-block text-xs font-semibold text-brand-primary tracking-wider uppercase mb-1">
+          <span className="inline-block text-[10px] sm:text-xs font-bold text-brand-primary tracking-wider uppercase mb-1">
             {badge}
           </span>
         )}
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-content-primary flex items-center gap-2">
+        <h2 className="text-xl sm:text-2xl font-black tracking-tight text-content-primary flex items-center gap-2">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-sm text-content-secondary mt-1">
+          <p className="text-xs sm:text-sm text-content-secondary mt-0.5 line-clamp-1 sm:line-clamp-none">
             {subtitle}
           </p>
         )}
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 pt-1 sm:pt-0">
         {action}
         {viewAllLink && (
           <SeeAllLink

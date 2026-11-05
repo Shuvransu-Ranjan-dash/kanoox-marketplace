@@ -121,7 +121,7 @@ export default function BannerCarousel({ banners }: BannerCarouselProps) {
         onMouseLeave={handleMouseUp}
         style={{
           WebkitOverflowScrolling: "touch",
-          touchAction: "pan-y",
+          touchAction: "pan-x pan-y",
         }}
         className={`flex items-stretch gap-3 sm:gap-4 md:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-1 px-1 ${
           isDragging ? "cursor-grabbing select-none" : "cursor-grab"

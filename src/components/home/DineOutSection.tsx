@@ -101,7 +101,7 @@ export default function DineOutSection() {
           onMouseLeave={handleMouseUp}
           style={{
             WebkitOverflowScrolling: "touch",
-            touchAction: "pan-y",
+            touchAction: "pan-x pan-y",
           }}
           className={`flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-3 pt-1 px-1 select-none ${
             isDragging ? "cursor-grabbing" : "cursor-grab"

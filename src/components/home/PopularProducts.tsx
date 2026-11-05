@@ -15,7 +15,7 @@ export default async function PopularProducts() {
           title="Best Sellers & Trending"
           subtitle="Most ordered items this week across Guyana"
           viewAllLink="#products"
-          viewAllText="Explore All Trending"
+          viewAllText="View all"
         />
 
         <ProductCarousel products={products} />
