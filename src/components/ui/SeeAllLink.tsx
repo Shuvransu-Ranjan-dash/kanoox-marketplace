@@ -21,9 +21,9 @@ export default function SeeAllLink({
     <Link
       href={href}
       style={{ color: currentCountry.primaryColor }}
-      className={`inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold transition-all group hover:opacity-80 select-none ${className}`}
+      className={`inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold transition-all group hover:opacity-80 select-none whitespace-nowrap flex-shrink-0 ${className}`}
     >
-      <span className="tracking-tight">{text}</span>
+      <span className="tracking-tight whitespace-nowrap">{text}</span>
       {/* 
         Signature "Half-circle with Arrow" matching Figma reference:
         - Clean left half-circle arc opening to the right

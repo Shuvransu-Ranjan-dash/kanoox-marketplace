@@ -57,14 +57,14 @@ export default function DineOutSection() {
   return (
     <section
       id="dine-out"
-      className={`py-7 sm:py-9 transition-all duration-300 scroll-mt-28 sm:scroll-mt-36 ${
+      className={`pt-2 sm:pt-6 pb-7 sm:pb-9 transition-all duration-300 scroll-mt-28 sm:scroll-mt-36 ${
         isDineOutActive ? "bg-amber-50/60 ring-2 ring-brand-primary/40 rounded-3xl" : "bg-background"
       }`}
     >
       <Container>
         {/* Section Heading matching Figma reference: "Dine Out" and "See all (->" */}
-        <div className="flex items-end justify-between mb-5 select-none">
-          <div>
+        <div className="flex items-start sm:items-end justify-between gap-3 mb-4 sm:mb-5 select-none">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-black uppercase tracking-widest text-brand-primary bg-brand-light px-2.5 py-0.5 rounded-full flex items-center gap-1">
                 {isDineOutActive && <CheckCircle2 className="w-3 h-3 text-emerald-600" />}
@@ -74,13 +74,15 @@ export default function DineOutSection() {
             <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-content-primary tracking-tight">
               Dine Out
             </h2>
-            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5 line-clamp-1 sm:line-clamp-none">
               Top rated Caribbean restaurants, waterfront bistros & artisan grills
             </p>
           </div>
 
           {/* Signature "See all (->" matching reference image */}
-          <SeeAllLink href="#dine-out" text="See all" />
+          <div className="flex-shrink-0 pt-1 sm:pt-0">
+            <SeeAllLink href="#dine-out" text="See all" />
+          </div>
         </div>
 
         {/* 
@@ -89,6 +91,7 @@ export default function DineOutSection() {
           - Native touch swipe with next card peeking on the right
           - Mouse drag-to-scroll on desktop
           - Mouse wheel horizontal scrolling
+          - touchAction: "pan-y" ensures vertical page scroll is NEVER stuck when touching cards
         */}
         <div
           ref={scrollContainerRef}
@@ -98,7 +101,7 @@ export default function DineOutSection() {
           onMouseLeave={handleMouseUp}
           style={{
             WebkitOverflowScrolling: "touch",
-            touchAction: "pan-x",
+            touchAction: "pan-y",
           }}
           className={`flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-3 pt-1 px-1 select-none ${
             isDragging ? "cursor-grabbing" : "cursor-grab"

@@ -103,42 +103,71 @@ export default function Header({
   const headerRef = useRef<HTMLElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+  const categoryRef = useRef<HTMLDivElement>(null);
   const bannerContainerRef = useRef<HTMLDivElement>(null);
   const bannerInnerRef = useRef<HTMLDivElement>(null);
 
-  // Dynamic heights (with robust default fallbacks)
-  const [topBarHeight, setTopBarHeight] = useState(54);
-  const [searchHeight, setSearchHeight] = useState(60);
-  const [bannerHeight, setBannerHeight] = useState(320);
-  const [spacerHeight, setSpacerHeight] = useState(500);
+  // Dynamic heights (with robust responsive defaults)
+  const [topBarHeight, setTopBarHeight] = useState(50);
+  const [searchHeight, setSearchHeight] = useState(58);
+  const [bannerHeight, setBannerHeight] = useState(260);
+  const [categoryHeight, setCategoryHeight] = useState(86);
+  const [spacerHeight, setSpacerHeight] = useState(480);
 
-  // Measure natural heights on mount and resize
+  // Measure natural heights on mount, resize, and responsive mode toggle
   useEffect(() => {
     const measure = () => {
-      if (topBarRef.current) {
-        const h = topBarRef.current.offsetHeight;
-        if (h > 0) setTopBarHeight(h);
-      }
-      if (searchRef.current) {
-        const h = searchRef.current.offsetHeight;
-        if (h > 0) setSearchHeight(h);
-      }
-      if (bannerInnerRef.current) {
-        const h = bannerInnerRef.current.offsetHeight;
-        if (h > 0) setBannerHeight(h);
-      }
-      if (headerRef.current && window.scrollY === 0) {
-        const h = headerRef.current.offsetHeight;
-        if (h > 0) setSpacerHeight(h);
-      }
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+      
+      let tbH = topBarRef.current?.offsetHeight || 0;
+      let sH = searchRef.current?.offsetHeight || 0;
+      let bH = bannerInnerRef.current?.offsetHeight || 0;
+      let cH = categoryRef.current?.offsetHeight || 0;
+
+      // Responsive fallbacks if not rendered yet
+      if (tbH <= 0) tbH = isMobile ? 44 : 54;
+      if (sH <= 0) sH = isMobile ? 56 : 60;
+      if (bH <= 0) bH = isMobile ? 260 : 380;
+      if (cH <= 0) cH = isMobile ? 86 : 106;
+
+      setTopBarHeight(tbH);
+      setSearchHeight(sH);
+      setBannerHeight(bH);
+      setCategoryHeight(cH);
+
+      // Header container vertical padding:
+      // Mobile: pt-3.5 (14px) + pb-4 (16px) = 30px
+      // Desktop: pt-4 (16px) + pb-6 (24px) = 40px
+      const padH = isMobile ? 30 : 40;
+
+      // Total resting header height is ALWAYS the sum of its natural parts!
+      // This works reliably whether window.scrollY is 0 or scrolled!
+      const totalNaturalHeight = tbH + sH + cH + bH + padH;
+      setSpacerHeight(totalNaturalHeight);
     };
 
     measure();
-    const timer = setTimeout(measure, 350);
+
+    // Track viewport resize & DevTools responsive mode changes
     window.addEventListener("resize", measure);
+
+    // ResizeObserver on body to detect responsive layout shifts immediately
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined" && document.body) {
+      ro = new ResizeObserver(() => {
+        measure();
+      });
+      ro.observe(document.body);
+    }
+
+    const timer1 = setTimeout(measure, 100);
+    const timer2 = setTimeout(measure, 350);
+
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("resize", measure);
+      if (ro) ro.disconnect();
+      clearTimeout(timer1);
+      clearTimeout(timer2);
     };
   }, []);
 
@@ -598,7 +627,7 @@ export default function Header({
         {/* ========================================================= */}
         {/* 3. 3D CATEGORIES ROW (Sticks at top: 0 in Phase 4!)       */}
         {/* ========================================================= */}
-        <div className="relative z-20 pb-1.5 sm:pb-2">
+        <div ref={categoryRef} className="relative z-20 pb-1.5 sm:pb-2">
           <CategorySection
             onSelectCategory={onCategoryFilter}
             selectedCategory={selectedCategory}
