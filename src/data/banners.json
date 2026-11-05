@@ -1,46 +1,46 @@
 {
   "heroBanners": [
     {
-      "id": "hero-1",
-      "tagline": "EXCLUSIVE TECH LAUNCH",
-      "title": "Next-Gen Audio & Smart Devices",
-      "highlightText": "Up to 35% OFF",
-      "subtitle": "Discover pure acoustics, intelligent noise reduction, and smart living tech with official brand warranty.",
-      "ctaText": "Shop Collection",
+      "id": "hero-paradise-plates",
+      "tagline": "HANDS FOR HUNGER",
+      "title": "Paradise Plates",
+      "highlightText": "Tasting Extravaganza & Charity Gala",
+      "subtitle": "Saturday, September 26, 2026",
+      "ctaText": "Get Tikkets",
+      "ctaLink": "#tickets",
+      "secondaryCtaText": "Event Details",
+      "secondaryCtaLink": "#details",
+      "discountBadge": "Tikkets",
+      "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
+      "theme": "festive-pink"
+    },
+    {
+      "id": "hero-tropical-carnival",
+      "tagline": "CARIBBEAN VIBES",
+      "title": "Paradise Food Festival",
+      "highlightText": "Over 40 Master Chefs & Mixologists",
+      "subtitle": "Nassau, Bahamas · Live Music & Culinary Delights",
+      "ctaText": "Explore Menu",
+      "ctaLink": "#dine-out",
+      "secondaryCtaText": "View Locations",
+      "secondaryCtaLink": "#stores",
+      "discountBadge": "FEATURED",
+      "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1200&q=80",
+      "theme": "tropical-green"
+    },
+    {
+      "id": "hero-tech-launch",
+      "tagline": "EXCLUSIVE LAUNCH",
+      "title": "Next-Gen Smart Living",
+      "highlightText": "Sony & Apple Official Releases",
+      "subtitle": "Caribbean-wide express delivery with official brand warranty.",
+      "ctaText": "Shop Gadgets",
       "ctaLink": "#products",
       "secondaryCtaText": "View Deals",
       "secondaryCtaLink": "#deals",
-      "discountBadge": "LIMITED OFFER",
+      "discountBadge": "35% OFF",
       "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80",
-      "backgroundColor": "from-slate-900 via-indigo-950 to-slate-900"
-    },
-    {
-      "id": "hero-2",
-      "tagline": "MODERN HOME & KITCHEN",
-      "title": "Upgrade Your Home Appliances",
-      "highlightText": "Save Big This Season",
-      "subtitle": "Premium smart refrigerators, air conditioners, and kitchen appliances tailored for Caribbean living.",
-      "ctaText": "Explore Appliances",
-      "ctaLink": "#appliances",
-      "secondaryCtaText": "Learn More",
-      "secondaryCtaLink": "#about",
-      "discountBadge": "MEGA SALE",
-      "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80",
-      "backgroundColor": "from-blue-950 via-slate-900 to-indigo-950"
-    },
-    {
-      "id": "hero-3",
-      "tagline": "FRESH STYLES & LUXURY",
-      "title": "Designer Fashion & Watches",
-      "highlightText": "New Arrivals 2026",
-      "subtitle": "Handpicked apparel, footwear, and luxury timepieces curated for the discerning customer.",
-      "ctaText": "Discover Fashion",
-      "ctaLink": "#fashion",
-      "secondaryCtaText": "View Lookbook",
-      "secondaryCtaLink": "#lookbook",
-      "discountBadge": "NEW IN",
-      "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-      "backgroundColor": "from-neutral-900 via-stone-900 to-zinc-900"
+      "theme": "tech-indigo"
     }
   ],
   "promoBanners": [
@@ -52,7 +52,7 @@
       "ctaText": "Save 20%",
       "ctaLink": "#products",
       "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=500&q=80",
-      "bgGradient": "from-indigo-600 to-violet-800"
+      "bgGradient": "from-teal-600 to-emerald-800"
     },
     {
       "id": "promo-2",
@@ -62,17 +62,7 @@
       "ctaText": "Shop Gaming",
       "ctaLink": "#products",
       "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=500&q=80",
-      "bgGradient": "from-blue-700 to-cyan-700"
-    },
-    {
-      "id": "promo-3",
-      "badge": "HOT DEAL",
-      "title": "Gourmet Coffee Roasts",
-      "subtitle": "Authentic Italian espresso blends",
-      "ctaText": "From GYD $6,500",
-      "ctaLink": "#products",
-      "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=500&q=80",
-      "bgGradient": "from-amber-700 to-orange-800"
+      "bgGradient": "from-cyan-700 to-blue-800"
     }
   ]
 }

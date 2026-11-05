@@ -21,7 +21,8 @@ export default function ProductPrice({
   className,
 }: ProductPriceProps) {
   const { currentCountry } = useTheme();
-  const activeCurrency = currency || currentCountry.currency;
+  // Always synchronize with the active country's currency and exchange rate
+  const activeCurrency = currentCountry.currency;
 
   const sizeClasses = {
     sm: "text-xs",

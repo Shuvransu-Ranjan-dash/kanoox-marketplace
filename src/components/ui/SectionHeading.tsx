@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import SeeAllLink from "@/components/ui/SeeAllLink";
 import { cn } from "@/utils/helpers";
 
 interface SectionHeadingProps {
@@ -43,13 +42,10 @@ export default function SectionHeading({
       <div className="flex items-center gap-3">
         {action}
         {viewAllLink && (
-          <Link
+          <SeeAllLink
             href={viewAllLink}
-            className="inline-flex items-center text-sm font-semibold text-brand-primary hover:text-brand-hover hover:underline transition-colors group"
-          >
-            {viewAllText}
-            <ChevronRight className="w-4 h-4 ml-0.5 transform group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+            text={viewAllText}
+          />
         )}
       </div>
     </div>

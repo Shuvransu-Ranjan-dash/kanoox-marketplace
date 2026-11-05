@@ -10,9 +10,10 @@ export interface Category {
   name: string;
   slug: string;
   icon: string;
-  image: string;
+  image?: string;
   itemCount: number;
   featured?: boolean;
   subcategories?: SubCategory[];
   badge?: string;
+  color?: string;
 }

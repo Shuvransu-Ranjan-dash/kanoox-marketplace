@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Default KanooX Theme (Modern Indigo & Tech Purple) */
-  --brand-primary: #5154b6;
-  --brand-secondary: #818cf8;
-  --brand-hover: #43459d;
-  --brand-light: #eef2ff;
+  /* Default / Bahamas Kanoo Theme (Signature Turquoise / Teal) */
+  --brand-primary: #008477;
+  --brand-secondary: #00a896;
+  --brand-hover: #006e63;
+  --brand-light: #e6f7f5;
+
+  --header-bg-from: #004e49;
+  --header-bg-via: #006e67;
+  --header-bg-to: #009688;
 
   --text-primary: #111827;
   --text-secondary: #4b5563;
@@ -20,8 +24,41 @@
   --container-width: 1280px;
 
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* India Theme (Saffron & Warm Rich Obsidian) */
+[data-theme="india"] {
+  --brand-primary: #ff671f;
+  --brand-secondary: #ff9933;
+  --brand-hover: #e05a1b;
+  --brand-light: #fff2e8;
+  --header-bg-from: #381a05;
+  --header-bg-via: #241103;
+  --header-bg-to: #120901;
+}
+
+/* Trinidad & Tobago Theme (Dark Wine & Crimson) */
+[data-theme="trinidad"] {
+  --brand-primary: #be123c;
+  --brand-secondary: #e11d48;
+  --brand-hover: #9f1239;
+  --brand-light: #ffe4e6;
+  --header-bg-from: #180508;
+  --header-bg-via: #22070c;
+  --header-bg-to: #2a090f;
+}
+
+/* Bahamas Theme (Teal & Aquamarine) */
+[data-theme="bahamas"] {
+  --brand-primary: #008477;
+  --brand-secondary: #00a896;
+  --brand-hover: #006e63;
+  --brand-light: #e6f7f5;
+  --header-bg-from: #002b27;
+  --header-bg-via: #003b35;
+  --header-bg-to: #004d46;
 }
 
 /* Guyana Theme (Emerald & Gold) */
@@ -30,6 +67,9 @@
   --brand-secondary: #f59e0b;
   --brand-hover: #047857;
   --brand-light: #ecfdf5;
+  --header-bg-from: #022417;
+  --header-bg-via: #043322;
+  --header-bg-to: #06452e;
 }
 
 /* Suriname Theme (Crimson & Amber) */
@@ -38,6 +78,9 @@
   --brand-secondary: #f59e0b;
   --brand-hover: #b91c1c;
   --brand-light: #fef2f2;
+  --header-bg-from: #210808;
+  --header-bg-via: #300c0c;
+  --header-bg-to: #401010;
 }
 
 /* Barbados Theme (Royal Blue & Gold) */
@@ -46,6 +89,31 @@
   --brand-secondary: #fbbf24;
   --brand-hover: #1e40af;
   --brand-light: #eff6ff;
+  --header-bg-from: #07152e;
+  --header-bg-via: #0c2145;
+  --header-bg-to: #102b59;
+}
+
+/* Jamaica Theme (Forest Green & Gold) */
+[data-theme="jamaica"] {
+  --brand-primary: #15803d;
+  --brand-secondary: #eab308;
+  --brand-hover: #166534;
+  --brand-light: #f0fdf4;
+  --header-bg-from: #0d1f07;
+  --header-bg-via: #162e0d;
+  --header-bg-to: #1e3d12;
+}
+
+/* Global / KanooX Default Theme */
+[data-theme="default"] {
+  --brand-primary: #5154b6;
+  --brand-secondary: #818cf8;
+  --brand-hover: #43459d;
+  --brand-light: #eef2ff;
+  --header-bg-from: #111026;
+  --header-bg-via: #1a1838;
+  --header-bg-to: #24224c;
 }
 
 @layer base {
@@ -57,30 +125,68 @@
     background-color: var(--background);
     color: var(--text-primary);
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
+}
+
+/* Smooth placeholder vertical slide-up transition */
+@keyframes placeholderSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-placeholder-in {
+  animation: placeholderSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: blink 1s infinite;
 }
 
 /* Smooth custom scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /* Hide scrollbar for carousel horizontal swipe while keeping scroll functionality */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "rest-01",
+    "name": "The Balcony Cafe & Grill",
+    "cuisine": "Caribbean & Seafood",
+    "rating": 4.9,
+    "reviewCount": 184,
+    "priceLevel": "$$",
+    "deliveryTime": "25-35 min",
+    "location": "Downtown Waterfront",
+    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "badge": "Top Choice",
+    "isOpen": true
+  },
+  {
+    "id": "rest-02",
+    "name": "Breeze Waterfront Lounge",
+    "cuisine": "Craft Cocktails & Tapas",
+    "rating": 4.8,
+    "reviewCount": 142,
+    "priceLevel": "$$$",
+    "deliveryTime": "30-40 min",
+    "location": "Harbour Marina",
+    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
+    "badge": "Popular",
+    "isOpen": true
+  },
+  {
+    "id": "rest-03",
+    "name": "Sapodilla Estate Artisan Dining",
+    "cuisine": "Fine Continental & Island Fusion",
+    "rating": 4.9,
+    "reviewCount": 210,
+    "priceLevel": "$$$$",
+    "deliveryTime": "Table Reservation",
+    "location": "West Bay Boulevard",
+    "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80",
+    "badge": "Michelin Recommended",
+    "isOpen": true
+  },
+  {
+    "id": "rest-04",
+    "name": "Island Palms Cafe & Bistro",
+    "cuisine": "Brunch, Artisan Coffee & Pastries",
+    "rating": 4.7,
+    "reviewCount": 98,
+    "priceLevel": "$$",
+    "deliveryTime": "15-25 min",
+    "location": "Royal Palm Plaza",
+    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80",
+    "badge": "Breakfast Pick",
+    "isOpen": true
+  }
+]

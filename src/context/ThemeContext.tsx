@@ -12,10 +12,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Default to Guyana (GYD) as specified in KanooX plan, or default theme
-  const [currentCountry, setCurrentCountry] = useState<CountryTheme>(
-    COUNTRIES.find((c) => c.id === "guyana") || COUNTRIES[0]
-  );
+  // Default to Trinidad & Tobago (matching user reference 2) or saved country
+  const [currentCountry, setCurrentCountry] = useState<CountryTheme>(COUNTRIES[0]);
 
   useEffect(() => {
     try {
@@ -24,23 +22,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         const found = COUNTRIES.find((c) => c.id === savedCountryId);
         if (found) {
           setCurrentCountry(found);
-          applyTheme(found.themeClass);
+          applyTheme(found);
           return;
         }
       }
     } catch {
       // LocalStorage unavailable
     }
-    applyTheme(currentCountry.themeClass);
+    applyTheme(currentCountry);
   }, []);
 
-  const applyTheme = (themeClass: string) => {
+  const applyTheme = (country: CountryTheme) => {
     if (typeof document !== "undefined") {
-      if (themeClass) {
-        document.documentElement.setAttribute("data-theme", themeClass);
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-      }
+      document.documentElement.setAttribute("data-theme", country.themeClass);
+      document.documentElement.style.setProperty("--brand-primary", country.primaryColor);
+      document.documentElement.style.setProperty("--header-bg", country.headerGradientCss);
     }
   };
 
@@ -48,7 +44,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const selected = COUNTRIES.find((c) => c.id === countryId);
     if (selected) {
       setCurrentCountry(selected);
-      applyTheme(selected.themeClass);
+      applyTheme(selected);
       try {
         localStorage.setItem("kanoox_country_theme", countryId);
       } catch {

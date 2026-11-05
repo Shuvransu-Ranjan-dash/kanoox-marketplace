@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CartProvider } from "@/context/CartContext";
+import { CategoryProvider } from "@/context/CategoryContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/layout/CartDrawer";
@@ -14,16 +15,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KanooX Marketplace | Guyana's Premier Online Store",
+  title: "KanooX Marketplace | Caribbean's Premier Online Store",
   description:
-    "Shop authentic electronics, laptops, home appliances, fashion, and pantry groceries with fast doorstep delivery across Guyana and the Caribbean.",
+    "Shop authentic electronics, fashion, household appliances, dining experiences, and gala tickets with fast doorstep delivery across the Caribbean.",
   keywords: [
     "KanooX",
-    "Guyana marketplace",
-    "online shopping Guyana",
-    "electronics Georgetown",
-    "home appliances",
-    "GYD currency store",
+    "Kanoo marketplace",
+    "Bahamas online store",
+    "Guyana online store",
+    "Trinidad marketplace",
+    "Caribbean digital marketplace",
   ],
 };
 
@@ -37,12 +38,14 @@ export default function RootLayout({
       <body className="font-sans antialiased min-h-screen flex flex-col justify-between bg-background text-content-primary">
         <ThemeProvider>
           <CartProvider>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <CartDrawer />
-            </div>
+            <CategoryProvider>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <CartDrawer />
+              </div>
+            </CategoryProvider>
           </CartProvider>
         </ThemeProvider>
       </body>
