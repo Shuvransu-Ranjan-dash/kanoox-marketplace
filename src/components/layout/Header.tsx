@@ -4,18 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  Search, 
-  Mic, 
   ChevronDown, 
-  Home, 
-  MapPin, 
-  Bell, 
-  User, 
-  ShoppingBag, 
   X, 
   Check
 } from "lucide-react";
-import { useCart } from "@/context/CartContext";
 import { useTheme } from "@/context/ThemeContext";
 import { formatPrice } from "@/utils/formatPrice";
 import { searchProducts } from "@/services/product.service";
@@ -24,11 +16,16 @@ import KanooLogo from "@/components/ui/KanooLogo";
 import CountryFlag from "@/components/ui/CountryFlag";
 import CategorySection from "@/components/home/CategorySection";
 import BannerCarousel from "@/components/home/BannerCarousel";
+import FashionSubNav from "@/components/fashion/FashionSubNav";
+import PopularBrands from "@/components/fashion/PopularBrands";
 import { HeroBanner } from "@/types/banner";
-import bannersData from "@/data/banners.json";
+import fashionData from "@/data/fashion.json";
+import countryContent from "@/data/country-content.json";
+import { useCategory } from "@/context/CategoryContext";
+
+type CountryContentKey = keyof typeof countryContent;
 
 interface HeaderProps {
-  heroBanners?: HeroBanner[];
   onCategoryFilter?: (categoryId: string) => void;
   selectedCategory?: string;
 }
@@ -44,12 +41,83 @@ const SEARCH_PLACEHOLDERS = [
 ];
 
 export default function Header({ 
-  heroBanners = bannersData.heroBanners as HeroBanner[], 
   onCategoryFilter, 
-  selectedCategory 
+  selectedCategory: propSelectedCategory 
 }: HeaderProps) {
-  const { totalItems, setIsCartOpen } = useCart();
   const { currentCountry, setCountry, availableCountries } = useTheme();
+  const { selectedCategory: contextCategory, setSelectedCategory, clearCategory, fashionSubTab } = useCategory();
+
+  const selectedCategory = propSelectedCategory !== undefined ? propSelectedCategory : contextCategory;
+  const isFashion = selectedCategory === "fashion";
+  const activeFashionTab = (fashionSubTab || "men").toLowerCase();
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    clearCategory();
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  // Dynamic Header Background:
+  // - Kids: Vibrant watercolor splash background texture (/Fashion/Kids/KidsBG.png) matching reference
+  // - Women: Linear Gradient from #370051 to #B61BCE matching Figma
+  // - Men: Linear Gradient from #181822 to #424139 matching Figma
+  // - Default: Country theme gradient
+  let headerGradientCss = currentCountry.headerGradientCss;
+
+  if (isFashion) {
+    if (activeFashionTab === "kids") {
+      headerGradientCss = "url('/Fashion/Kids/KidsBG.png') center / cover no-repeat, linear-gradient(180deg, #4A0E4E 0%, #831843 50%, #0D9488 100%)";
+    } else if (activeFashionTab === "women") {
+      headerGradientCss = "linear-gradient(180deg, #370051 0%, #B61BCE 100%)";
+    } else {
+      headerGradientCss = "linear-gradient(180deg, #181822 0%, #424139 100%)";
+    }
+  }
+
+  const searchBgCss = isFashion
+    ? activeFashionTab === "kids"
+      ? "rgba(255, 255, 255, 0.18)"
+      : activeFashionTab === "women"
+      ? "rgba(255, 255, 255, 0.16)"
+      : "rgba(255, 255, 255, 0.12)"
+    : currentCountry.searchBgCss;
+
+  const cardBorderCss = isFashion
+    ? activeFashionTab === "kids"
+      ? "rgba(255, 255, 255, 0.28)"
+      : activeFashionTab === "women"
+      ? "rgba(255, 255, 255, 0.24)"
+      : "rgba(255, 255, 255, 0.18)"
+    : currentCountry.cardBorderCss;
+
+  // Distinct background for the separated Popular Brands card (Figma Rectangle 20927)
+  let popularBrandsBgCss = "linear-gradient(180deg, #1E1E24 0%, #15151A 100%)";
+  if (isFashion) {
+    if (activeFashionTab === "women") {
+      popularBrandsBgCss = "linear-gradient(180deg, #370051 0%, #B61BCE 100%)";
+    } else if (activeFashionTab === "kids") {
+      popularBrandsBgCss = "linear-gradient(180deg, #240C38 0%, #3D1154 100%)";
+    } else {
+      popularBrandsBgCss = "linear-gradient(180deg, #1E1E24 0%, #15151A 100%)";
+    }
+  }
+
+  // Source hero banners from country-specific content (replaces static banners.json)
+  const countryId = currentCountry.id as CountryContentKey;
+  const countryData = countryContent[countryId] ?? countryContent["bahamas"];
+  const countryHeroBanners = countryData.heroBanners as unknown as HeroBanner[];
+
+  let displayedBanners = countryHeroBanners;
+  if (isFashion) {
+    if (activeFashionTab === "kids") {
+      displayedBanners = fashionData.kidsHeroBanners as unknown as HeroBanner[];
+    } else if (activeFashionTab === "women") {
+      displayedBanners = fashionData.womenHeroBanners as unknown as HeroBanner[];
+    } else {
+      displayedBanners = fashionData.menHeroBanners as unknown as HeroBanner[];
+    }
+  }
 
   // Search input starts EMPTY (not hardcoded text!)
   const [searchQuery, setSearchQuery] = useState("");
@@ -112,7 +180,13 @@ export default function Header({
   const [searchHeight, setSearchHeight] = useState(58);
   const [bannerHeight, setBannerHeight] = useState(260);
   const [categoryHeight, setCategoryHeight] = useState(86);
+  const [fashionNavHeight, setFashionNavHeight] = useState(0);
+  const [popularBrandsHeight, setPopularBrandsHeight] = useState(130);
   const [spacerHeight, setSpacerHeight] = useState(480);
+
+  const fashionNavRef = useRef<HTMLDivElement>(null);
+  const popularBrandsContainerRef = useRef<HTMLDivElement>(null);
+  const popularBrandsInnerRef = useRef<HTMLDivElement>(null);
 
   // Measure natural heights on mount, resize, and responsive mode toggle
   useEffect(() => {
@@ -123,17 +197,22 @@ export default function Header({
       let sH = searchRef.current?.offsetHeight || 0;
       let bH = bannerInnerRef.current?.offsetHeight || 0;
       let cH = categoryRef.current?.offsetHeight || 0;
+      let fnH = fashionNavRef.current?.offsetHeight || 0;
+      let pbH = popularBrandsInnerRef.current?.offsetHeight || 0;
 
       // Responsive fallbacks if not rendered yet
       if (tbH <= 0) tbH = isMobile ? 44 : 54;
       if (sH <= 0) sH = isMobile ? 56 : 60;
       if (bH <= 0) bH = isMobile ? 260 : 380;
       if (cH <= 0) cH = isMobile ? 86 : 106;
+      if (isFashion && pbH <= 0) pbH = isMobile ? 120 : 135;
 
       setTopBarHeight(tbH);
       setSearchHeight(sH);
       setBannerHeight(bH);
       setCategoryHeight(cH);
+      setFashionNavHeight(fnH);
+      setPopularBrandsHeight(pbH);
 
       // Header container vertical padding:
       // Mobile: pt-3.5 (14px) + pb-4 (16px) = 30px
@@ -142,7 +221,8 @@ export default function Header({
 
       // Total resting header height is ALWAYS the sum of its natural parts!
       // This works reliably whether window.scrollY is 0 or scrolled!
-      const totalNaturalHeight = tbH + sH + cH + bH + padH;
+      const overlapH = isFashion ? (isMobile ? 12 : 16) : 0;
+      const totalNaturalHeight = tbH + sH + cH + bH + fnH + (isFashion ? pbH - overlapH : 0) + padH;
       setSpacerHeight(totalNaturalHeight);
     };
 
@@ -169,7 +249,7 @@ export default function Header({
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
-  }, []);
+  }, [isFashion]);
 
   // Continuous monotonic scroll position tracked via requestAnimationFrame
   const [scrollY, setScrollY] = useState(0);
@@ -196,17 +276,49 @@ export default function Header({
   const topBarOffset = Math.min(topBarHeight, Math.max(0, scrollY));
   const topBarOpacity = Math.max(0, 1 - (topBarOffset / Math.max(1, topBarHeight)) * 1.5);
 
-  // Step 2: Banner closes like a box under Categories (Search & Categories remain fully visible!)
-  const bannerScroll = Math.max(0, scrollY - topBarHeight);
-  const bannerOffset = Math.min(bannerHeight, bannerScroll);
+  let bannerOffset = 0;
+  let searchOffset = 0;
+  let searchOpacity = 1;
+  let popularBrandsOffset = 0;
+  let categoryScrollOffset = 0;
+  let isCompactHeader = false;
 
-  // Step 3: Once Banner is completely closed, Search Line slides up and hides
-  const searchScroll = Math.max(0, scrollY - (topBarHeight + bannerHeight));
-  const searchOffset = Math.min(searchHeight, searchScroll);
-  const searchOpacity = Math.max(0, 1 - (searchOffset / Math.max(1, searchHeight)) * 1.5);
+  if (isFashion) {
+    // =========================================================
+    // FASHION MODE SCROLL PHASES (Matching Images 1, 2, and 3):
+    // 1. Search slides up after Top Bar
+    const searchScroll = Math.max(0, scrollY - topBarHeight);
+    searchOffset = Math.min(searchHeight, searchScroll);
+    searchOpacity = Math.max(0, 1 - (searchOffset / Math.max(1, searchHeight)) * 1.5);
 
-  // Step 4: Category is stuck firmly at top: 0
-  const isStuckWithCategory = searchOffset >= searchHeight;
+    // 2. Hero Banner collapses after Search
+    const bannerScroll = Math.max(0, scrollY - (topBarHeight + searchHeight));
+    bannerOffset = Math.min(bannerHeight, bannerScroll);
+
+    // 3. Popular Brands collapses after Banner
+    const pbScroll = Math.max(0, scrollY - (topBarHeight + searchHeight + bannerHeight));
+    popularBrandsOffset = Math.min(popularBrandsHeight, pbScroll);
+
+    // Once hero banner & popular brands close, we reach Image 2 state (Categories + Men/Women stuck!)
+    const isPastHeroAndBrands = popularBrandsOffset >= popularBrandsHeight;
+    isCompactHeader = isPastHeroAndBrands;
+
+    // 4. As user scrolls further down into products, Category section slides up and hides,
+    // leaving the Men/Women subnav section pinned firmly at top: 0!
+    const catScroll = Math.max(0, scrollY - (topBarHeight + searchHeight + bannerHeight + popularBrandsHeight + 50));
+    categoryScrollOffset = Math.min(categoryHeight, catScroll);
+  } else {
+    // =========================================================
+    // DEFAULT HOMEPAGE SCROLL PHASES:
+    const bannerScroll = Math.max(0, scrollY - topBarHeight);
+    bannerOffset = Math.min(bannerHeight, bannerScroll);
+
+    const searchScroll = Math.max(0, scrollY - (topBarHeight + bannerHeight));
+    searchOffset = Math.min(searchHeight, searchScroll);
+    searchOpacity = Math.max(0, 1 - (searchOffset / Math.max(1, searchHeight)) * 1.5);
+
+    isCompactHeader = searchOffset >= searchHeight;
+  }
 
   // Country selector modal state
   const [isCountryModalOpen, setIsCountryModalOpen] = useState(false);
@@ -291,18 +403,37 @@ export default function Header({
       */}
       <header
         ref={headerRef}
-        style={{ background: currentCountry.headerGradientCss }}
+        style={
+          isFashion
+            ? { background: "transparent" }
+            : { background: headerGradientCss }
+        }
         className={`w-full text-white select-none fixed top-0 left-0 right-0 z-40 transition-shadow ${
-          isStuckWithCategory
-            ? "pt-2 pb-2.5 sm:pb-3 rounded-b-2xl sm:rounded-b-3xl shadow-2xl border-b border-white/10"
-            : "pt-3.5 sm:pt-4 pb-4 sm:pb-6 rounded-b-[2.5rem] sm:rounded-b-[3.5rem] shadow-2xl"
+          !isFashion
+            ? isCompactHeader
+              ? "pt-2 pb-2.5 sm:pb-3 rounded-b-2xl sm:rounded-b-3xl shadow-2xl border-b border-white/10"
+              : "pt-3.5 sm:pt-4 pb-4 sm:pb-6 rounded-b-[2.5rem] sm:rounded-b-[3.5rem] shadow-2xl"
+            : ""
         }`}
       >
-        <div className="w-full max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
-          
-          {/* ========================================================= */}
-          {/* 1. TOP APP BAR (Avatar, User, Kanoo Logo, Quick Pills)     */}
-          {/* ========================================================= */}
+        {/* UPPER CARD (Figma Rectangle 20926): Holds TopBar, Search, Categories, Banner & SubNav */}
+        <div
+          style={isFashion ? { background: headerGradientCss } : undefined}
+          className={
+            isFashion
+              ? `w-full text-white shadow-xl shadow-black/25 relative z-20 overflow-hidden ${
+                  isCompactHeader
+                    ? "pt-2 pb-2 sm:pb-2.5 rounded-b-[20px] sm:rounded-b-[24px] border-b border-white/10"
+                    : "pt-3.5 sm:pt-4 pb-2.5 sm:pb-3.5 rounded-b-[20px] sm:rounded-b-[24px]"
+                }`
+              : ""
+          }
+        >
+          <div className="w-full max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
+            
+            {/* ========================================================= */}
+            {/* 1. TOP APP BAR (Avatar, User, Kanoo Logo, Quick Pills)     */}
+            {/* ========================================================= */}
           <div
             ref={topBarRef}
             style={{
@@ -313,84 +444,103 @@ export default function Header({
             className="pt-1 pb-2 sm:pb-3"
           >
             <div className="flex items-center justify-between gap-1.5 sm:gap-2">
-              {/* Left: User Avatar & Verification Badge */}
-              <div className="flex items-center space-x-1.5 sm:space-x-2.5 min-w-0 flex-shrink">
-                <div
-                  style={{ backgroundColor: currentCountry.cardBgCss, borderColor: currentCountry.cardBorderCss }}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border flex items-center justify-center text-white/90 shadow-sm flex-shrink-0"
-                >
-                  <User className="w-4 h-4 sm:w-5 sm:h-5 text-white/80" />
+              {/* Left: User Avatar (James Lowe) & Verification Badge */}
+              <div className="flex items-center space-x-2 sm:space-x-2.5 min-w-0 flex-shrink">
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full overflow-hidden border border-white/20 shadow-sm flex-shrink-0 bg-white/10">
+                  <Image
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                    alt="James Lowe"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
                 <div className="leading-tight min-w-0">
                   <h1 className="text-xs sm:text-sm md:text-base font-bold text-white tracking-tight flex items-center gap-1 truncate">
-                    Shuvransu Dash
+                    James Lowe
                   </h1>
                   <p
                     style={{ color: currentCountry.textMutedColor }}
                     className="text-[10px] sm:text-[11px] font-medium flex items-center gap-1 truncate"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse flex-shrink-0" />
                     <span className="truncate">Level 1 Verified</span>
                   </p>
                 </div>
               </div>
 
-              {/* Center: Kanoo Stylized Origami Logo '><' */}
-              <Link href="/" className="flex items-center justify-center hover:scale-105 transition-transform flex-shrink-0 px-1" aria-label="Kanoo Home">
-                <KanooLogo className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white drop-shadow-md" />
+              {/* Center: Kanoo Folded Ribbon 'X' Logo */}
+              <Link
+                href="/"
+                onClick={handleHomeClick}
+                className="flex items-center justify-center hover:scale-105 transition-transform flex-shrink-0 px-1"
+                aria-label="Kanoo Home"
+              >
+                <KanooLogo className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 drop-shadow-md" />
               </Link>
 
-              {/* Right: Quick Action Controls (4 responsive identical size & height buttons) */}
-              <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-2.5 flex-shrink-0">
-                {/* 1. Home Button */}
-                <Link
-                  href="/"
-                  title="Home"
-                  style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl sm:rounded-2xl border flex items-center justify-center text-white/80 hover:text-white transition-all shadow-sm active:scale-95 hover:scale-105"
+              {/* Right: Quick Action Controls (Combined [Home + Location] Pill & Standalone Notification Bell) */}
+              <div className="flex items-center space-x-2.5 sm:space-x-3 flex-shrink-0">
+                {/* Combined Pill Container: Home & Location Pin */}
+                <div
+                  style={{
+                    backgroundColor: searchBgCss,
+                    borderColor: cardBorderCss,
+                  }}
+                  className="h-9 sm:h-10 px-3 sm:px-3.5 border rounded-2xl flex items-center gap-3 sm:gap-3.5 shadow-sm"
                 >
-                  <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5" />
-                </Link>
+                  {/* Home Action */}
+                  <Link
+                    href="/"
+                    onClick={handleHomeClick}
+                    title="Home"
+                    className="flex items-center justify-center text-white/90 hover:text-white transition-opacity active:scale-95 cursor-pointer"
+                  >
+                    <Image
+                      src="/icons/home.png"
+                      alt="Home"
+                      width={20}
+                      height={20}
+                      className="w-4.5 h-4.5 sm:w-5 sm:h-5 object-contain brightness-0 invert opacity-95"
+                      priority
+                    />
+                  </Link>
 
-                {/* 2. Location Pin Button */}
-                <button
-                  type="button"
-                  onClick={() => setIsCountryModalOpen(true)}
-                  title={`Location: ${currentCountry.deliveryCity}`}
-                  style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl sm:rounded-2xl border flex items-center justify-center text-white/80 hover:text-white transition-all shadow-sm active:scale-95 hover:scale-105 cursor-pointer"
-                  aria-label="Location Settings"
-                >
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5" />
-                </button>
+                  {/* Location Pin Action */}
+                  <button
+                    type="button"
+                    onClick={() => setIsCountryModalOpen(true)}
+                    title={`Location: ${currentCountry.deliveryCity}`}
+                    className="flex items-center justify-center text-white/90 hover:text-white transition-opacity active:scale-95 cursor-pointer"
+                    aria-label="Location Settings"
+                  >
+                    <Image
+                      src="/icons/location.png"
+                      alt="Location"
+                      width={20}
+                      height={20}
+                      className="w-4.5 h-4.5 sm:w-5 sm:h-5 object-contain"
+                      priority
+                    />
+                  </button>
+                </div>
 
-                {/* 3. Notification Bell with Red Dot */}
+                {/* Standalone Notification Bell with Red Dot */}
                 <button
                   type="button"
                   onClick={() => setHasUnreadNotification(!hasUnreadNotification)}
-                  style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
-                  className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl sm:rounded-2xl border flex items-center justify-center text-white/80 hover:text-white transition-all shadow-sm active:scale-95 hover:scale-105 cursor-pointer"
+                  className="relative p-1.5 text-white/90 hover:text-white transition-all active:scale-95 cursor-pointer flex items-center justify-center"
                   aria-label="Notifications"
                 >
-                  <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5" />
+                  <Image
+                    src="/icons/notification.png"
+                    alt="Notifications"
+                    width={22}
+                    height={22}
+                    className="w-5 h-5 sm:w-5.5 sm:h-5.5 object-contain"
+                    priority
+                  />
                   {hasUnreadNotification && (
-                    <span className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 w-2.5 h-2.5 bg-[#EF4444] rounded-full ring-2 ring-black/40 shadow-sm" />
-                  )}
-                </button>
-
-                {/* 4. Shopping Cart Button */}
-                <button
-                  type="button"
-                  onClick={() => setIsCartOpen(true)}
-                  style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
-                  className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-xl sm:rounded-2xl border flex items-center justify-center text-white/80 hover:text-white transition-all shadow-sm active:scale-95 hover:scale-105 cursor-pointer"
-                  aria-label="Shopping Cart"
-                >
-                  <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5" />
-                  {totalItems > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 min-w-[19px] h-[19px] sm:min-w-[21px] sm:h-[21px] px-1 text-[10px] sm:text-[11px] font-black bg-[#EF4444] text-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-black/40 z-30 pointer-events-none">
-                      {totalItems}
-                    </span>
+                    <span className="absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-[#FF2D20] rounded-full ring-2 ring-black/50 shadow-sm" />
                   )}
                 </button>
               </div>
@@ -413,11 +563,18 @@ export default function Header({
             {/* Search Input Box with Animated Smooth Sliding Placeholder */}
             <div className="flex-1 relative" ref={searchContainerRef}>
               <div
-                style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
+                style={{ backgroundColor: searchBgCss, borderColor: cardBorderCss }}
                 className="flex items-center h-12 border rounded-2xl px-3.5 shadow-inner transition-all relative overflow-hidden"
               >
                 {/* Search Magnifier Icon */}
-                <Search className="w-4 h-4 sm:w-5 sm:h-5 text-white/60 mr-2.5 flex-shrink-0 z-20" />
+                <Image
+                  src="/icons/Search.png"
+                  alt="Search"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain mr-2.5 flex-shrink-0 z-20 opacity-80"
+                  priority
+                />
 
                 {/* Input Text Field */}
                 <div className="flex-1 relative h-full flex items-center overflow-hidden">
@@ -457,15 +614,22 @@ export default function Header({
                 <button
                   type="button"
                   onClick={toggleVoiceSearch}
-                  className={`p-1.5 rounded-full transition-all z-20 ${
+                  className={`p-1.5 rounded-full transition-all z-20 flex items-center justify-center ${
                     isListening
                       ? "bg-red-500 text-white animate-pulse"
-                      : "text-white/60 hover:text-white hover:bg-white/10"
+                      : "opacity-80 hover:opacity-100 hover:bg-white/10"
                   }`}
                   title={isListening ? "Listening... (Speak now)" : "Voice Search"}
                   aria-label="Voice Search"
                 >
-                  <Mic className="w-4 h-4" />
+                  <Image
+                    src="/icons/Microphone.png"
+                    alt="Voice Search"
+                    width={18}
+                    height={18}
+                    className="w-4 h-4 sm:w-4.5 sm:h-4.5 object-contain"
+                    priority
+                  />
                 </button>
               </div>
 
@@ -548,7 +712,7 @@ export default function Header({
               <button
                 type="button"
                 onClick={() => setIsCountryModalOpen((prev) => !prev)}
-                style={{ backgroundColor: currentCountry.searchBgCss, borderColor: currentCountry.cardBorderCss }}
+                style={{ backgroundColor: searchBgCss, borderColor: cardBorderCss }}
                 className="h-12 px-3 sm:px-3.5 border rounded-2xl flex items-center gap-2 text-white shadow-sm transition-all flex-shrink-0 active:scale-95 cursor-pointer"
                 title={`Active Country: ${currentCountry.name} (${currentCountry.currency})`}
                 aria-label="Select Country and Theme"
@@ -625,24 +789,37 @@ export default function Header({
         </div>
 
         {/* ========================================================= */}
-        {/* 3. 3D CATEGORIES ROW (Sticks at top: 0 in Phase 4!)       */}
+        {/* 3. 3D CATEGORIES ROW                                       */}
         {/* ========================================================= */}
-        <div ref={categoryRef} className="relative z-20 pb-1.5 sm:pb-2">
+        <div
+          ref={categoryRef}
+          style={{
+            marginTop: isFashion && categoryScrollOffset > 0 ? -categoryScrollOffset : undefined,
+            opacity: isFashion && categoryScrollOffset > 0 ? Math.max(0, 1 - (categoryScrollOffset / Math.max(1, categoryHeight)) * 1.5) : 1,
+            overflow: isFashion && categoryScrollOffset > 0 ? "hidden" : "visible",
+          }}
+          className="relative z-20 pb-1 sm:pb-1.5"
+        >
           <CategorySection
             onSelectCategory={onCategoryFilter}
-            selectedCategory={selectedCategory}
+            selectedCategory={selectedCategory || undefined}
             isCompact={true}
           />
         </div>
 
         {/* ========================================================= */}
-        {/* 4. HERO BANNER CAROUSEL (Closes like a box in Step 2)     */}
+        {/* 4. HERO BANNER CAROUSEL (Closes like a box on scroll)     */}
         {/* ========================================================= */}
-        {heroBanners.length > 0 && (
+        {displayedBanners.length > 0 && (
           <div
             ref={bannerContainerRef}
             style={{
-              height: isStuckWithCategory ? 0 : bannerOffset > 0 ? Math.max(0, bannerHeight - bannerOffset) : undefined,
+              height: isCompactHeader && (!isFashion || bannerOffset >= bannerHeight)
+                ? 0
+                : bannerOffset > 0
+                ? Math.max(0, bannerHeight - bannerOffset)
+                : undefined,
+              opacity: bannerOffset > 0 ? Math.max(0, 1 - (bannerOffset / Math.max(1, bannerHeight)) * 1.5) : 1,
               overflow: "hidden",
             }}
             className="relative z-0"
@@ -654,13 +831,54 @@ export default function Header({
               }}
               className="pt-1 sm:pt-2"
             >
-              <BannerCarousel banners={heroBanners} />
+              <BannerCarousel banners={displayedBanners} />
             </div>
           </div>
         )}
 
-      </div>
-    </header>
+        {/* ========================================================= */}
+        {/* 5. FASHION SUB-NAVIGATION TABS (Men, Women, Kids, Shoes...) */}
+        {/* ========================================================= */}
+        {isFashion && (
+          <div ref={fashionNavRef} className="relative z-20 pt-1 pb-1">
+            <FashionSubNav />
+          </div>
+        )}
+
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* LOWER CARD (Figma Rectangle 20927): Separated Popular Brands */}
+        {/* ========================================================= */}
+        {isFashion && (
+          <div
+            ref={popularBrandsContainerRef}
+            style={{
+              height: isCompactHeader && popularBrandsOffset >= popularBrandsHeight
+                ? 0
+                : popularBrandsOffset > 0
+                ? Math.max(0, popularBrandsHeight - popularBrandsOffset)
+                : undefined,
+              opacity: popularBrandsOffset > 0
+                ? Math.max(0, 1 - (popularBrandsOffset / Math.max(1, popularBrandsHeight)) * 1.5)
+                : 1,
+              overflow: "hidden",
+            }}
+            className="w-full relative z-10 -mt-3.5 sm:-mt-4"
+          >
+            <div
+              ref={popularBrandsInnerRef}
+              style={{ background: popularBrandsBgCss }}
+              className="w-full text-white rounded-b-[20px] sm:rounded-b-[24px] shadow-2xl shadow-black/35 pt-4 pb-2.5 sm:pt-5 sm:pb-3"
+            >
+              <div className="w-full max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
+                <PopularBrands />
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
     </>
   );
 }

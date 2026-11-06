@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
-import { CartProvider } from "@/context/CartContext";
 import { CategoryProvider } from "@/context/CategoryContext";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import CartDrawer from "@/components/layout/CartDrawer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,19 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" data-theme="bahamas" className={inter.variable}>
       <body className="font-sans antialiased min-h-screen flex flex-col justify-between bg-background text-content-primary">
         <ThemeProvider>
-          <CartProvider>
-            <CategoryProvider>
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className="flex-1">{children}</main>
-                <Footer />
-                <CartDrawer />
-              </div>
-            </CategoryProvider>
-          </CartProvider>
+          <CategoryProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-1">{children}</main>
+            </div>
+          </CategoryProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -2,9 +2,13 @@ import React from "react";
 
 interface KanooLogoProps {
   className?: string;
+  width?: number;
+  height?: number;
 }
 
-export default function KanooLogo({ className = "w-7 h-7" }: KanooLogoProps) {
+export default function KanooLogo({
+  className = "w-7 h-7 sm:w-8 sm:h-8",
+}: KanooLogoProps) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -13,32 +17,35 @@ export default function KanooLogo({ className = "w-7 h-7" }: KanooLogoProps) {
       className={className}
       aria-label="Kanoo Logo"
     >
-      {/* Sleek Kanoo Folded Ribbon 'X' Logo */}
+      <defs>
+        <linearGradient id="kanoo-silver-fold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#E2E8F0" />
+          <stop offset="100%" stopColor="#94A3B8" />
+        </linearGradient>
+      </defs>
+      {/* Sleek Kanoo Origami Ribbon 'X' Logo matching Figma reference */}
       <g>
-        {/* Main diagonal fold (top-left to bottom-right) */}
+        {/* Main white left-side folded chevron (<) */}
         <polygon
-          points="20,18 42,42 22,66 12,54 26,38 12,24"
+          points="22,24 40,24 58,48 40,76 22,76 44,48"
           fill="#FFFFFF"
-          fillOpacity="0.95"
         />
+        {/* Top-right sharp needle wing extending upwards */}
         <polygon
-          points="80,18 58,42 78,66 88,54 74,38 88,24"
+          points="82,20 46,46 54,54 86,22"
           fill="#FFFFFF"
-          fillOpacity="0.95"
         />
-        {/* Bottom crossing ribbon */}
+        {/* Bottom-right angled silver fold ribbon */}
         <polygon
-          points="22,82 48,52 62,68 40,92 24,92"
-          fill="#FFFFFF"
-          fillOpacity="0.9"
+          points="46,46 76,78 58,78 38,54"
+          fill="url(#kanoo-silver-fold)"
         />
+        {/* Subtle center intersection depth shadow */}
         <polygon
-          points="78,82 52,52 38,68 60,92 76,92"
-          fill="#FFFFFF"
-          fillOpacity="0.9"
+          points="44,48 54,48 50,56 42,52"
+          fill="#0F172A"
+          fillOpacity="0.25"
         />
-        {/* Center geometric intersection */}
-        <circle cx="50" cy="50" r="5" fill="#FFFFFF" />
       </g>
     </svg>
   );

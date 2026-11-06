@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { HeroBanner } from "@/types/banner";
 
 interface BannerCarouselProps {
@@ -128,8 +128,6 @@ export default function BannerCarousel({ banners }: BannerCarouselProps) {
         }`}
       >
         {banners.map((banner) => {
-          const isParadisePlates = banner.id === "hero-paradise-plates";
-
           return (
             <div
               key={banner.id}
@@ -139,119 +137,120 @@ export default function BannerCarousel({ banners }: BannerCarouselProps) {
                   : "w-full"
               }`}
             >
-              {isParadisePlates ? (
-                /* ======================================================== */
-                /* PARADISE PLATES HERO BANNER (Matches Reference Figma)    */
-                /* ======================================================== */
-                <div className="relative w-full h-[240px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[440px] 2xl:h-[470px] bg-gradient-to-r from-[#FCE4EC] via-[#F8BBD0] to-[#F48FB1] p-5 sm:p-8 md:p-12 flex flex-col justify-between overflow-hidden">
-                  {/* Background Festive Disco Ball Spheres & Ambience */}
-                  <div className="absolute -top-10 -left-10 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-500 opacity-45 blur-[2px] pointer-events-none" />
-                  <div className="absolute top-4 -right-6 w-36 sm:w-52 md:w-68 h-36 sm:h-52 md:h-68 rounded-full bg-gradient-to-br from-purple-400 via-pink-500 to-indigo-600 opacity-45 blur-[2px] pointer-events-none" />
-                  <div className="absolute bottom-2 left-1/4 w-24 h-24 rounded-full bg-pink-300/40 blur-xl pointer-events-none" />
-
-                  {/* Top Row: "Tikkets" ribbon badge & Hands for Hunger Official Seal */}
-                  <div className="relative z-10 flex items-start justify-between">
-                    {/* Black "Tikkets" badge rotated with neon pink border */}
-                    <div className="bg-black text-white text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-wider px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl -rotate-12 shadow-xl flex items-center gap-1.5 border border-pink-400/60 pointer-events-none">
-                      <span className="text-yellow-400">★</span>
-                      <span>TIKKETS</span>
-                    </div>
-
-                    {/* Hands for Hunger Paradise Plates Emblem */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full bg-white shadow-xl border-2 border-amber-600/40 p-1.5 flex flex-col items-center justify-center text-center pointer-events-none">
-                      <span className="text-[14px] sm:text-[18px] md:text-[22px] leading-none">🌴</span>
-                      <span className="text-[7px] sm:text-[8px] md:text-[9px] font-black text-emerald-800 uppercase leading-none mt-0.5">Hands for</span>
-                      <span className="text-[8px] sm:text-[10px] md:text-[11px] font-black text-amber-700 uppercase leading-none">HUNGER</span>
-                      <span className="text-[6px] sm:text-[7px] md:text-[8px] font-medium text-slate-500 leading-none">Paradise Plates</span>
-                    </div>
+              {/* Clean Banner Slide displaying full artwork or Kids Special Offer Banner */}
+              {banner.id === "banner-kids-1" ? (
+                <div className="relative w-full h-[240px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[440px] 2xl:h-[470px] overflow-hidden bg-gradient-to-br from-[#FEF08A] via-[#FDE047] to-[#FACC15] select-none">
+                  {/* Colorful Confetti Shapes */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-85">
+                    <span className="absolute top-4 left-8 w-2 h-4 bg-[#EC4899] rotate-45 rounded-xs" />
+                    <span className="absolute top-12 left-28 w-3 h-2 bg-[#06B6D4] -rotate-12 rounded-xs" />
+                    <span className="absolute top-6 left-56 w-2 h-5 bg-[#8B5CF6] rotate-12 rounded-xs" />
+                    <span className="absolute bottom-16 left-12 w-2 h-4 bg-[#F97316] rotate-45 rounded-xs" />
+                    <span className="absolute bottom-8 left-36 w-3 h-2 bg-[#E11D48] -rotate-45 rounded-xs" />
+                    <span className="absolute top-20 left-1/3 w-2 h-3 bg-[#10B981] rotate-90 rounded-xs" />
+                    <span className="absolute bottom-20 left-1/2 w-3 h-2 bg-[#EC4899] rotate-12 rounded-xs" />
+                    <span className="absolute top-8 right-1/3 w-3 h-2 bg-[#3B82F6] -rotate-30 rounded-xs" />
+                    <span className="absolute top-24 right-1/4 w-2 h-4 bg-[#F59E0B] rotate-60 rounded-xs" />
                   </div>
 
-                  {/* Center Typography: "Paradise Plates" in elegant dark plum serif font */}
-                  <div className="relative z-10 text-center my-auto pointer-events-none">
-                    <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-[#3A0D38] font-serif drop-shadow-sm leading-tight">
-                      Paradise Plates
+                  {/* Left Side Promotional Content */}
+                  <div className="absolute inset-y-0 left-0 w-3/5 sm:w-7/12 p-4 sm:p-7 md:p-10 lg:p-12 flex flex-col justify-center z-10">
+                    <span className="font-serif italic text-base sm:text-2xl md:text-3xl lg:text-4xl text-[#BE123C] font-black tracking-wide drop-shadow-xs">
+                      Special Offer
+                    </span>
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#9F1239] tracking-tight leading-none mt-1 sm:mt-2 drop-shadow-xs">
+                      UP TO 50% OFF
                     </h2>
-                    <p className="text-xs sm:text-base md:text-lg lg:text-xl font-bold text-[#5C1B58] tracking-wide mt-1.5 sm:mt-2.5">
-                      {banner.subtitle}
-                    </p>
+                    <div className="mt-2 sm:mt-3.5 inline-flex items-center">
+                      <span className="bg-[#E11D48] text-white text-[9px] sm:text-xs md:text-sm font-black px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-md uppercase tracking-wider shadow-md">
+                        THE BEST BRANDS, THE BEST PRICES
+                      </span>
+                    </div>
+
+                    <div className="mt-3.5 sm:mt-5">
+                      <span className="inline-flex items-center gap-1.5 bg-black hover:bg-gray-900 text-white text-[11px] sm:text-xs md:text-sm font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full shadow-xl transition-all">
+                        <span>SHOP NOW</span>
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Bottom CTA Button */}
-                  <div className="relative z-10 flex justify-center pb-1">
-                    <Link
-                      href={banner.ctaLink}
-                      onClick={(e) => {
-                        if (hasDragged) e.preventDefault();
-                      }}
-                      className="inline-flex items-center gap-2 bg-[#4A0E4E] hover:bg-[#380A3B] text-white text-xs sm:text-sm md:text-base font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full shadow-xl transition-all active:scale-95 group"
-                    >
-                      <span>{banner.ctaText}</span>
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                  {/* Right Side Joyful Kid Artwork */}
+                  <div className="absolute right-2 sm:right-6 md:right-12 bottom-0 top-0 w-2/5 sm:w-5/12 flex items-end justify-center pointer-events-none">
+                    <div className="relative w-full h-full max-h-[92%] sm:max-h-[95%]">
+                      <Image
+                        src="/Fashion/Kids/4.png"
+                        alt="Kids Fashion"
+                        fill
+                        className="object-contain object-bottom drop-shadow-xl"
+                        priority
+                      />
+                    </div>
                   </div>
                 </div>
               ) : (
-                /* ======================================================== */
-                /* STANDARD PROMOTIONAL BANNER SLIDE                        */
-                /* ======================================================== */
-                <div className="relative w-full h-[240px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[440px] 2xl:h-[470px] bg-slate-900">
-                  <Image
-                    src={banner.image}
-                    alt={banner.title}
-                    fill
-                    className="object-cover object-center pointer-events-none"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1560px) 1440px, 1560px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent pointer-events-none" />
-
-                  <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 text-white z-10 max-w-2xl">
-                    {banner.discountBadge && (
-                      <span className="self-start inline-flex items-center gap-1 text-[10px] sm:text-xs font-extrabold uppercase bg-brand-primary text-white px-3 py-1 rounded-full mb-3 shadow-md pointer-events-none">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        {banner.discountBadge}
-                      </span>
-                    )}
-                    <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white drop-shadow-md pointer-events-none">
-                      {banner.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-200 mt-2 line-clamp-2 max-w-lg pointer-events-none">
-                      {banner.subtitle}
-                    </p>
-                    <Link
-                      href={banner.ctaLink}
-                      onClick={(e) => {
-                        if (hasDragged) e.preventDefault();
-                      }}
-                      className="self-start mt-5 inline-flex items-center gap-2 bg-white text-slate-900 text-xs sm:text-sm md:text-base font-bold px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl hover:bg-brand-primary hover:text-white transition-all shadow-lg active:scale-95"
+                <div
+                  className={`relative w-full overflow-hidden bg-slate-900 ${
+                    banner.image?.includes("/Fashion/") ||
+                    banner.id?.includes("fashion") ||
+                    banner.id?.includes("men") ||
+                    banner.id?.includes("women")
+                      ? "aspect-[1.78/1] sm:aspect-[1.8/1] max-h-[440px]"
+                      : "aspect-[4/3] sm:aspect-[16/10] md:aspect-[1.45/1] max-h-[460px]"
+                  }`}
+                >
+                  {banner.video ? (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      poster={banner.image}
+                      className="w-full h-full object-cover pointer-events-none"
                     >
-                      <span>{banner.ctaText}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
+                      <source src={banner.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={banner.image}
+                      alt={banner.title}
+                      fill
+                      className="object-cover object-center pointer-events-none"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1560px) 1440px, 1560px"
+                      priority
+                    />
+                  )}
+
+                  {/* Subtle bottom-right CTA Button */}
+                  {banner.ctaText && (
+                    <div className="absolute bottom-2.5 sm:bottom-4 md:bottom-6 right-2.5 sm:right-5 md:right-8 z-10">
+                      {banner.ctaLink ? (
+                        <Link
+                          href={banner.ctaLink}
+                          onClick={(e) => {
+                            if (hasDragged) {
+                              e.preventDefault();
+                            }
+                          }}
+                          className="inline-flex items-center gap-1.5 sm:gap-2 bg-black/80 hover:bg-black backdrop-blur-md text-white text-[11px] sm:text-xs md:text-sm font-bold px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-xl transition-all active:scale-95 group border border-white/25 cursor-pointer"
+                        >
+                          <span>{banner.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      ) : (
+                        <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-black/80 hover:bg-black backdrop-blur-md text-white text-[11px] sm:text-xs md:text-sm font-bold px-3 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-xl transition-all border border-white/25">
+                          <span>{banner.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           );
         })}
       </div>
-
-      {/* Slide Navigation Indicator Dots */}
-      {total > 1 && (
-        <div className="flex items-center justify-center space-x-2 mt-3">
-          {banners.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollToSlide(idx)}
-              className={`transition-all duration-300 rounded-full ${
-                idx === currentSlide
-                  ? "w-7 h-2 bg-white shadow-sm"
-                  : "w-2 h-2 bg-white/40 hover:bg-white/70"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }

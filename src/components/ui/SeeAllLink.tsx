@@ -2,49 +2,49 @@
 
 import React from "react";
 import Link from "next/link";
-import { useTheme } from "@/context/ThemeContext";
+import Image from "next/image";
 
 interface SeeAllLinkProps {
   href: string;
   text?: string;
   className?: string;
+  textColor?: string;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export default function SeeAllLink({
   href,
   text = "See all",
   className = "",
+  textColor,
+  onClick,
 }: SeeAllLinkProps) {
-  const { currentCountry } = useTheme();
+  // If explicitly styled with white text (e.g. in Popular Brands on dark cards), invert the PNG to white
+  const isWhite =
+    textColor?.toLowerCase().includes("white") ||
+    textColor?.includes("255, 255, 255") ||
+    className.includes("text-white");
 
   return (
     <Link
       href={href}
-      style={{ color: currentCountry.primaryColor }}
-      className={`inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold transition-all group hover:opacity-80 select-none whitespace-nowrap flex-shrink-0 ${className}`}
+      onClick={onClick}
+      className={`inline-flex items-center transition-all duration-200 hover:opacity-80 select-none flex-shrink-0 group ${className}`}
     >
-      <span className="tracking-tight whitespace-nowrap">{text}</span>
-      {/* 
-        Signature "Half-circle with Arrow" matching Figma reference:
-        - Clean left half-circle arc opening to the right
-        - Standalone arrow with clear visible gap (does NOT touch the circle)
-      */}
-      <svg
-        className="w-4 h-4 sm:w-5 sm:h-5 text-current transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+      <div
+        className={`relative h-[18px] sm:h-[22px] w-[60px] sm:w-[74px] transition-transform duration-200 group-hover:translate-x-0.5 ${
+          isWhite ? "brightness-0 invert opacity-90 group-hover:opacity-100" : ""
+        }`}
       >
-        {/* Left half-circle arc: curves around the left */}
-        <path d="M 8 4.5 A 7.5 7.5 0 0 0 8 19.5" />
-        {/* Arrow stem: separate with clear visible gap, never touches the arc */}
-        <path d="M 11.5 12 H 21" />
-        {/* Arrow chevron tip */}
-        <path d="M 17 8 L 21 12 L 17 16" />
-      </svg>
+        <Image
+          src="/icons/See_All.png"
+          alt={text}
+          fill
+          className="object-contain"
+          sizes="74px"
+          priority
+        />
+      </div>
     </Link>
   );
 }

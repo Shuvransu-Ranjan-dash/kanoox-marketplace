@@ -6,12 +6,15 @@ interface CategoryContextType {
   selectedCategory: string | null;
   setSelectedCategory: (categoryId: string | null) => void;
   clearCategory: () => void;
+  fashionSubTab: string;
+  setFashionSubTab: (tab: string) => void;
 }
 
 const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
 
 export function CategoryProvider({ children }: { children: React.ReactNode }) {
   const [selectedCategory, setSelectedCategoryState] = useState<string | null>(null);
+  const [fashionSubTab, setFashionSubTab] = useState<string>("men");
 
   // Sync with URL hash or query on mount
   useEffect(() => {
@@ -40,15 +43,12 @@ export function CategoryProvider({ children }: { children: React.ReactNode }) {
       window.history.replaceState({}, "", url.toString());
 
       // Auto-scroll to target section with a slight offset
-      if (categoryId === "dine-out") {
+      if (categoryId === "fashion") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (categoryId === "dine-out") {
         const dineOutEl = document.getElementById("dine-out");
         if (dineOutEl) {
           dineOutEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      } else if (categoryId) {
-        const prodEl = document.getElementById("products-section");
-        if (prodEl) {
-          prodEl.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     }
@@ -64,6 +64,8 @@ export function CategoryProvider({ children }: { children: React.ReactNode }) {
         selectedCategory,
         setSelectedCategory,
         clearCategory,
+        fashionSubTab,
+        setFashionSubTab,
       }}
     >
       {children}

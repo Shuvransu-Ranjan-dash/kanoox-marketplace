@@ -11,9 +11,11 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const DEFAULT_COUNTRY = COUNTRIES.find((c) => c.id === "bahamas") || COUNTRIES[0];
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Default to Trinidad & Tobago (matching user reference 2) or saved country
-  const [currentCountry, setCurrentCountry] = useState<CountryTheme>(COUNTRIES[0]);
+  // Default to The Bahamas (matching Figma linear gradient: #08495B -> #1BCECB)
+  const [currentCountry, setCurrentCountry] = useState<CountryTheme>(DEFAULT_COUNTRY);
 
   useEffect(() => {
     try {
@@ -29,7 +31,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // LocalStorage unavailable
     }
-    applyTheme(currentCountry);
+    // Default to The Bahamas
+    setCurrentCountry(DEFAULT_COUNTRY);
+    applyTheme(DEFAULT_COUNTRY);
   }, []);
 
   const applyTheme = (country: CountryTheme) => {

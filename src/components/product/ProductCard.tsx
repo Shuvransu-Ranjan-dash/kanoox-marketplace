@@ -3,9 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShoppingBag, Star, Check } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { Product } from "@/types/product";
-import { useCart } from "@/context/CartContext";
 import { useFavourites } from "@/hooks/useFavourites";
 import ProductPrice from "@/components/product/ProductPrice";
 import Badge from "@/components/ui/Badge";
@@ -17,20 +16,10 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, className }: ProductCardProps) {
-  const { addToCart } = useCart();
   const { toggleFavourite, isFavourite } = useFavourites();
   const [isHovered, setIsHovered] = useState(false);
-  const [addedAnimation, setAddedAnimation] = useState(false);
 
   const isFav = isFavourite(product.id);
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addToCart(product, 1);
-    setAddedAnimation(true);
-    setTimeout(() => setAddedAnimation(false), 1200);
-  };
 
   const handleToggleFav = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -132,7 +121,7 @@ export default function ProductCard({ product, className }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Pricing & Add To Cart Bar */}
+        {/* Pricing Bar */}
         <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between gap-2">
           <ProductPrice
             price={product.price}
@@ -141,29 +130,16 @@ export default function ProductCard({ product, className }: ProductCardProps) {
             size="md"
           />
 
-          <button
-            onClick={handleAddToCart}
-            disabled={!product.inStock}
+          <span
             className={cn(
-              "p-2 sm:px-3 sm:py-2 rounded-md font-semibold text-xs flex items-center justify-center gap-1.5 transition-all duration-200 shadow-sm",
-              addedAnimation
-                ? "bg-emerald-600 text-white"
-                : "bg-brand-primary hover:bg-brand-hover text-white active:scale-95 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed"
+              "text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full border",
+              product.inStock
+                ? "text-emerald-700 bg-emerald-50 border-emerald-200"
+                : "text-rose-700 bg-rose-50 border-rose-200"
             )}
-            title="Add to cart"
           >
-            {addedAnimation ? (
-              <>
-                <Check className="w-4 h-4" />
-                <span className="hidden sm:inline">Added</span>
-              </>
-            ) : (
-              <>
-                <ShoppingBag className="w-4 h-4" />
-                <span className="hidden sm:inline">Add</span>
-              </>
-            )}
-          </button>
+            {product.inStock ? "In Stock" : "Sold Out"}
+          </span>
         </div>
       </div>
     </div>

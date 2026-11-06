@@ -1,0 +1,250 @@
+{
+  "bahamas": {
+    "heroBanners": [
+      {
+        "id": "bah-hero-1",
+        "tagline": "HANDS FOR HUNGER",
+        "title": "Paradise Plates",
+        "highlightText": "Tasting Extravaganza & Charity Gala",
+        "subtitle": "Saturday, September 26, 2026",
+        "ctaText": "Get Tikkets",
+        "ctaLink": "#tickets",
+        "secondaryCtaText": "Event Details",
+        "secondaryCtaLink": "#details",
+        "discountBadge": "Tikkets",
+        "image": "/images/Banner/1st.png",
+        "theme": "festive-pink"
+      },
+      {
+        "id": "bah-hero-2",
+        "tagline": "CARIBBEAN VIBES",
+        "title": "Paradise Food Festival",
+        "highlightText": "Over 40 Master Chefs & Mixologists",
+        "subtitle": "Nassau, Bahamas · Live Music & Culinary Delights",
+        "ctaText": "Explore Menu",
+        "ctaLink": "#dine-out",
+        "secondaryCtaText": "View Locations",
+        "secondaryCtaLink": "#stores",
+        "discountBadge": "FEATURED",
+        "image": "/images/Banner/2nd.png",
+        "theme": "tropical-green"
+      },
+      {
+        "id": "bah-hero-3",
+        "tagline": "EXCLUSIVE LAUNCH",
+        "title": "Next-Gen Smart Living",
+        "highlightText": "Sony & Apple Official Releases",
+        "subtitle": "Caribbean-wide express delivery with official brand warranty.",
+        "ctaText": "Shop Gadgets",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "35% OFF",
+        "image": "/images/Banner/3rd.png",
+        "theme": "tech-indigo"
+      }
+    ],
+    "convenienceStore": [
+      { "id": "bah-cs-1", "image": "/Country1/Convience_store/1.png", "name": "Fresh Mart Bahamas" },
+      { "id": "bah-cs-2", "image": "/Country1/Convience_store/2.png", "name": "Nassau Quick Stop" },
+      { "id": "bah-cs-3", "image": "/Country1/Convience_store/3.png", "name": "Island Essentials" }
+    ],
+    "fitnessEquipment": [
+      { "id": "bah-fit-1", "image": "/Country1/Fittness Equipment/image.png", "name": "Nassau Fitness Hub" }
+    ],
+    "jewelry": [
+      { "id": "bah-jew-1", "image": "/Country1/Jwelery/1.png", "name": "Bahamas Gold" },
+      { "id": "bah-jew-2", "image": "/Country1/Jwelery/2.png", "name": "Nassau Gems" },
+      { "id": "bah-jew-3", "image": "/Country1/Jwelery/3.png", "name": "Island Jewels" }
+    ],
+    "electronics": [
+      { "id": "bah-elec-1", "video": "/Country1/Electronics/video.mp4", "name": "boAt Nirvana Ion ANC" }
+    ]
+  },
+  "trinidad": {
+    "heroBanners": [
+      {
+        "id": "tri-hero-1",
+        "tagline": "BEAUTY & STYLE",
+        "title": "Makeup Madness",
+        "highlightText": "Top Beauty Brands Available Now",
+        "subtitle": "Port of Spain, Trinidad & Tobago",
+        "ctaText": "Shop Beauty",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View All",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "NEW",
+        "image": "/images/Banner/1st.png",
+        "theme": "festive-pink"
+      },
+      {
+        "id": "tri-hero-2",
+        "tagline": "TRENDING NOW",
+        "title": "Style Forward",
+        "highlightText": "Latest Fashion Collections",
+        "subtitle": "Free delivery across Trinidad & Tobago",
+        "ctaText": "Shop Now",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "SALE",
+        "image": "/images/Banner/2nd.png",
+        "theme": "tropical-green"
+      },
+      {
+        "id": "tri-hero-3",
+        "tagline": "TECH DEALS",
+        "title": "Action Cam Special",
+        "highlightText": "Action Cam · Colores para tu app",
+        "subtitle": "Official warranty. Island-wide delivery.",
+        "ctaText": "Shop Tech",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "35% OFF",
+        "image": "/images/Banner/3rd.png",
+        "theme": "tech-indigo"
+      }
+    ],
+    "convenienceStore": [
+      { "id": "tri-cs-1", "image": "/Country2/conviencestore/1.png", "name": "POS Quick Mart" },
+      { "id": "tri-cs-2", "image": "/Country2/conviencestore/2.png", "name": "Trinidad Essentials" },
+      { "id": "tri-cs-3", "image": "/Country2/conviencestore/3.png", "name": "Tobago Fresh Stop" }
+    ],
+    "fitnessEquipment": [
+      { "id": "tri-fit-1", "image": "/Country2/Fittness/image.png", "name": "Find Your Perfect Gym" }
+    ],
+    "jewelry": [
+      { "id": "tri-jew-1", "image": "/Country2/Jwelery/1.png", "name": "POS Jewels" },
+      { "id": "tri-jew-2", "image": "/Country2/Jwelery/2.png", "name": "Caribbean Gems TT" },
+      { "id": "tri-jew-3", "image": "/Country2/Jwelery/3.png", "name": "Trinidad Gold" }
+    ],
+    "electronics": [
+      { "id": "tri-elec-1", "image": "/Country2/Electronics/image.png", "name": "TT Tech Centre" }
+    ]
+  },
+  "jamaica": {
+    "heroBanners": [
+      {
+        "id": "jam-hero-1",
+        "tagline": "TASTE JAMAICA",
+        "title": "Delicious Food",
+        "highlightText": "Authentic Jamaican Cuisine",
+        "subtitle": "Kingston, Jamaica · Island-wide delivery",
+        "ctaText": "Order Now",
+        "ctaLink": "#dine-out",
+        "secondaryCtaText": "View Restaurants",
+        "secondaryCtaLink": "#dine-out",
+        "discountBadge": "HOT",
+        "image": "/images/Banner/1st.png",
+        "theme": "tropical-green"
+      },
+      {
+        "id": "jam-hero-2",
+        "tagline": "FITNESS CLUB",
+        "title": "Fitness Club 20% OFF",
+        "highlightText": "Best Fitness Equipment Deals",
+        "subtitle": "Jamaica-wide delivery available",
+        "ctaText": "Shop Fitness",
+        "ctaLink": "#fitness",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "20% OFF",
+        "image": "/images/Banner/2nd.png",
+        "theme": "tropical-green"
+      },
+      {
+        "id": "jam-hero-3",
+        "tagline": "TECH SPECIAL",
+        "title": "Colors That Pop",
+        "highlightText": "Crafted to carry · Premium devices",
+        "subtitle": "Official brand warranty included",
+        "ctaText": "Shop Tech",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "NEW",
+        "image": "/images/Banner/3rd.png",
+        "theme": "tech-indigo"
+      }
+    ],
+    "convenienceStore": [
+      { "id": "jam-cs-1", "image": "/Country3/ConvienceStore/1.png", "name": "Kingston Quick Mart" },
+      { "id": "jam-cs-2", "image": "/Country3/ConvienceStore/2.png", "name": "JA Fresh Stop" },
+      { "id": "jam-cs-3", "image": "/Country3/ConvienceStore/3.png", "name": "Island Convenience" }
+    ],
+    "fitnessEquipment": [
+      { "id": "jam-fit-1", "image": "/Country3/Fittness Equipments/image.png", "name": "Jamaica Fitness Club" }
+    ],
+    "jewelry": [
+      { "id": "jam-jew-1", "image": "/Country3/Jewelry/1.png", "name": "Kingston Gold" },
+      { "id": "jam-jew-2", "image": "/Country3/Jewelry/2.png", "name": "JA Gems & Pearls" },
+      { "id": "jam-jew-3", "image": "/Country3/Jewelry/3.png", "name": "Montego Jewels" }
+    ],
+    "electronics": [
+      { "id": "jam-elec-1", "image": "/Country3/Electronics/image.png", "name": "JA Tech Hub" }
+    ]
+  },
+  "guyana": {
+    "heroBanners": [
+      {
+        "id": "guy-hero-1",
+        "tagline": "BIG SAVINGS",
+        "title": "Sale Offer",
+        "highlightText": "Massive Discounts Across All Categories",
+        "subtitle": "Georgetown, Guyana · Free delivery available",
+        "ctaText": "Shop Sale",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View All Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "SALE",
+        "image": "/images/Banner/1st.png",
+        "theme": "festive-pink"
+      },
+      {
+        "id": "guy-hero-2",
+        "tagline": "FITNESS DEALS",
+        "title": "35% OFF Equipment",
+        "highlightText": "Premium Fitness Gear at Best Prices",
+        "subtitle": "Guyana-wide delivery on all equipment",
+        "ctaText": "Shop Fitness",
+        "ctaLink": "#fitness",
+        "secondaryCtaText": "View Deals",
+        "secondaryCtaLink": "#deals",
+        "discountBadge": "35% OFF",
+        "image": "/images/Banner/2nd.png",
+        "theme": "tropical-green"
+      },
+      {
+        "id": "guy-hero-3",
+        "tagline": "JUST LAUNCHED",
+        "title": "iPhone 17 Pro Max",
+        "highlightText": "Ultra Chip · Like 25mp · 48 2x.",
+        "subtitle": "Official Apple warranty. Georgetown delivery.",
+        "ctaText": "Order Now",
+        "ctaLink": "#products",
+        "secondaryCtaText": "View Specs",
+        "secondaryCtaLink": "#details",
+        "discountBadge": "NEW",
+        "image": "/images/Banner/3rd.png",
+        "theme": "tech-indigo"
+      }
+    ],
+    "convenienceStore": [
+      { "id": "guy-cs-1", "image": "/Country4/ConvienceStore/1.png", "name": "Georgetown Mart" },
+      { "id": "guy-cs-2", "image": "/Country4/ConvienceStore/2.png", "name": "Guyana Fresh Stop" },
+      { "id": "guy-cs-3", "image": "/Country4/ConvienceStore/3.png", "name": "GY Quick Essentials" }
+    ],
+    "fitnessEquipment": [
+      { "id": "guy-fit-1", "image": "/Country4/FittnessEquipments/image.png", "name": "GY Fitness Hub" }
+    ],
+    "jewelry": [
+      { "id": "guy-jew-1", "image": "/Country4/Jewelry/1.png", "name": "Georgetown Gold" },
+      { "id": "guy-jew-2", "image": "/Country4/Jewelry/2.png", "name": "Guyana Gems" },
+      { "id": "guy-jew-3", "image": "/Country4/Jewelry/3.png", "name": "GY Fine Jewelry" }
+    ],
+    "electronics": [
+      { "id": "guy-elec-1", "image": "/Country4/Electronics/image.png", "name": "GY Tech & Gadgets" }
+    ]
+  }
+}

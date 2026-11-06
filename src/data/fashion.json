@@ -1,0 +1,425 @@
+{
+  "gradient": {
+    "start": "#181822",
+    "end": "#424139",
+    "css": "linear-gradient(180deg, #181822 0%, #424139 100%)"
+  },
+  "subTabs": [
+    { "id": "men", "name": "Men" },
+    { "id": "women", "name": "Women" },
+    { "id": "kids", "name": "Kids" },
+    { "id": "shoes", "name": "Shoes" },
+    { "id": "sandals", "name": "Sandals" },
+    { "id": "bags", "name": "Bags" },
+    { "id": "hats", "name": "Hats" }
+  ],
+  "brands": [
+    {
+      "id": "tommy-bahama",
+      "name": "Tommy Bahama",
+      "logo": "/fashion/Brands/Tommy_Bahamas.png"
+    },
+    {
+      "id": "bahari",
+      "name": "Bahari Bahamas",
+      "logo": "/fashion/Brands/Bahari.png"
+    },
+    {
+      "id": "versace",
+      "name": "Versace",
+      "logo": "/fashion/Brands/Versence.png"
+    },
+    {
+      "id": "kf",
+      "name": "KF",
+      "logo": "/fashion/Brands/KF.png"
+    },
+    {
+      "id": "del-sol",
+      "name": "Del Sol",
+      "logo": "/fashion/Brands/DelSol.png"
+    },
+    {
+      "id": "heatwave",
+      "name": "HeatWave",
+      "logo": "/fashion/Brands/HeatWave.png"
+    },
+    {
+      "id": "carlo",
+      "name": "Carlo",
+      "logo": "/fashion/Brands/Carlo.png"
+    },
+    {
+      "id": "etsy",
+      "name": "Etsy Bahamas",
+      "logo": "/fashion/Brands/Etsy.png"
+    }
+  ],
+  "menHeroBanners": [
+    {
+      "id": "banner-men-1",
+      "tagline": "NEW COLLECTION",
+      "title": "New Collection LUXURY",
+      "highlightText": "Luxury Tailoring & Island Elegance",
+      "subtitle": "Discover hand-tailored tweed blazers, premium knitwear, and resort linen.",
+      "ctaText": "Shop Collection",
+      "ctaLink": "#products",
+      "discountBadge": "NEW",
+      "image": "/fashion/Banner_Men/1.png"
+    },
+    {
+      "id": "banner-men-2",
+      "tagline": "TOMMY BAHAMA",
+      "title": "The Linen Edit",
+      "highlightText": "Island shirts, cut for the heat",
+      "subtitle": "Breathable camp shirts, lightweight blazers, and coastal polos from $138.",
+      "ctaText": "Shop Now",
+      "ctaLink": "#products",
+      "discountBadge": "NEW",
+      "image": "/fashion/Banner_Men/2.png"
+    },
+    {
+      "id": "banner-men-3",
+      "tagline": "WEEKEND ESSENTIALS",
+      "title": "Pack light. Travel well.",
+      "highlightText": "20% OFF Island Travel Gear",
+      "subtitle": "Raffia hats, leather passport wallets, driver loafers & messenger bags.",
+      "ctaText": "Explore Deals",
+      "ctaLink": "#products",
+      "discountBadge": "20% OFF",
+      "image": "/fashion/Banner_Men/3.png"
+    }
+  ],
+  "womenHeroBanners": [
+    {
+      "id": "banner-women-1",
+      "tagline": "NEW AUTUMN SEASON",
+      "title": "The New Autumn Collection",
+      "highlightText": "M&S Women's Fashion",
+      "subtitle": "Discover effortlessly chic knitwear, tailoring, and evening silhouettes.",
+      "ctaText": "Shop Collection",
+      "ctaLink": "#products",
+      "discountBadge": "NEW",
+      "image": "/Fashion/Banner_Women/1.png",
+      "video": "/Fashion/Banner_Women/video.mp4"
+    }
+  ],
+  "kidsHeroBanners": [
+    {
+      "id": "banner-kids-1",
+      "tagline": "SPECIAL OFFER",
+      "title": "Special Offer UP TO 50% OFF",
+      "highlightText": "THE BEST BRANDS, THE BEST PRICES",
+      "subtitle": "Playful styles, comfortable layettes, and holiday sets.",
+      "ctaText": "Shop Kids",
+      "ctaLink": "#products",
+      "discountBadge": "50% OFF",
+      "image": "/Fashion/Kids/KidsBG.png"
+    }
+  ],
+  "menProductsUpper": [
+    {
+      "id": "men-prod-1",
+      "name": "Carlsbad Stripe Linen Shirt",
+      "shortName": "Carlsbad Stripe Linen...",
+      "brand": "Tommy Bahama",
+      "price": 140.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/1.png",
+      "rating": 4.9,
+      "reviewCount": 42
+    },
+    {
+      "id": "men-prod-2",
+      "name": "Palomino Palms Silk Camp Shirt",
+      "shortName": "Palomino Palms Silk Ca...",
+      "brand": "Tommy Bahama",
+      "price": 195.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/2.png",
+      "rating": 4.8,
+      "reviewCount": 38
+    },
+    {
+      "id": "men-prod-3",
+      "name": "Indigo Beach Linen Blazer",
+      "shortName": "Indigo Beach Linen Bla...",
+      "brand": "Tommy Bahama",
+      "price": 395.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/3.png",
+      "rating": 5.0,
+      "reviewCount": 29
+    },
+    {
+      "id": "men-prod-4",
+      "name": "Coastal Ease Palm Coast Polo",
+      "shortName": "Coastal Ease Palm Coas...",
+      "brand": "Tommy Bahama",
+      "price": 130.80,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/4.png",
+      "rating": 4.7,
+      "reviewCount": 51
+    }
+  ],
+  "menProductsLower": [
+    {
+      "id": "men-prod-5",
+      "name": "Springs Raffia Hat",
+      "shortName": "Springs Raffia Hat",
+      "brand": "Tommy Bahama",
+      "price": 55.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/5.png",
+      "rating": 4.9,
+      "reviewCount": 64
+    },
+    {
+      "id": "men-prod-6",
+      "name": "Leather Passport Travel Wallet",
+      "shortName": "Leather Passport Trave...",
+      "brand": "Tommy Bahama",
+      "price": 54.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/6.png",
+      "rating": 4.8,
+      "reviewCount": 83
+    },
+    {
+      "id": "men-prod-7",
+      "name": "Noble Driver Slip-On Shoe",
+      "shortName": "Noble Driver Slip-On Shoe",
+      "brand": "Tommy Bahama",
+      "price": 150.80,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/7.png",
+      "rating": 4.9,
+      "reviewCount": 47
+    },
+    {
+      "id": "men-prod-8",
+      "name": "Nalon Messenger Bag",
+      "shortName": "Nalon Messenger Bag",
+      "brand": "Tommy Bahama",
+      "price": 175.80,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/fashion/Men/8.png",
+      "rating": 5.0,
+      "reviewCount": 35
+    }
+  ],
+  "kidsProductsUpper": [
+    {
+      "id": "kids-prod-1",
+      "name": "3-Piece Layette Set",
+      "shortName": "3-Piece Layette Set",
+      "brand": "Tommy Bahama",
+      "price": 21.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/1.png",
+      "rating": 4.9,
+      "reviewCount": 38
+    },
+    {
+      "id": "kids-prod-2",
+      "name": "3-Pack Bodysuits",
+      "shortName": "3-Pack Bodysuits",
+      "brand": "Tommy Bahama",
+      "price": 23.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/2.png",
+      "rating": 4.8,
+      "reviewCount": 45
+    },
+    {
+      "id": "kids-prod-3",
+      "name": "4-Piece Outfit Set",
+      "shortName": "4-Piece Outfit Set",
+      "brand": "Tommy Bahama",
+      "price": 20.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/3.png",
+      "rating": 4.9,
+      "reviewCount": 52
+    },
+    {
+      "id": "kids-prod-4",
+      "name": "3-Piece Leggings Set",
+      "shortName": "3-Piece Leggings Set",
+      "brand": "Tommy Bahama",
+      "price": 18.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/4.png",
+      "rating": 5.0,
+      "reviewCount": 67
+    }
+  ],
+  "kidsProductsLower": [
+    {
+      "id": "kids-prod-5",
+      "name": "2-Piece Pants Set",
+      "shortName": "2-Piece Pants Set",
+      "brand": "Tommy Bahama",
+      "price": 7.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/5.png",
+      "rating": 4.7,
+      "reviewCount": 29
+    },
+    {
+      "id": "kids-prod-6",
+      "name": "3-Piece Outfit Set",
+      "shortName": "3-Piece Outfit Set",
+      "brand": "Tommy Bahama",
+      "price": 19.59,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/6.png",
+      "rating": 4.9,
+      "reviewCount": 41
+    },
+    {
+      "id": "kids-prod-7",
+      "name": "3-Piece Shorts Set",
+      "shortName": "3-Piece Shorts Set",
+      "brand": "Tommy Bahama",
+      "price": 14.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/7.png",
+      "rating": 4.8,
+      "reviewCount": 56
+    },
+    {
+      "id": "kids-prod-8",
+      "name": "4-Piece Layette Set",
+      "shortName": "4-Piece Layette Set",
+      "brand": "Tommy Bahama",
+      "price": 21.99,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Kids/8.png",
+      "rating": 4.9,
+      "reviewCount": 34
+    }
+  ],
+  "womenProductsUpper": [
+    {
+      "id": "women-prod-1",
+      "name": "Aruba Island Bloom Tunic",
+      "shortName": "Aruba Island Bloom...",
+      "brand": "Tommy Bahama",
+      "price": 128.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/1.png",
+      "rating": 4.9,
+      "reviewCount": 42
+    },
+    {
+      "id": "women-prod-2",
+      "name": "Leopard High-Rise Linen Culottes",
+      "shortName": "Leopard High-Rise...",
+      "brand": "Tommy Bahama",
+      "price": 118.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/2.png",
+      "rating": 4.8,
+      "reviewCount": 36
+    },
+    {
+      "id": "women-prod-3",
+      "name": "Bloom Collared Linen Dress",
+      "shortName": "Bloom Collared Linen...",
+      "brand": "Tommy Bahama",
+      "price": 158.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/3..png",
+      "rating": 5.0,
+      "reviewCount": 28
+    },
+    {
+      "id": "women-prod-4",
+      "name": "Embroidered Lux T-Shirt",
+      "shortName": "Embroidered Lux T-Sh...",
+      "brand": "Tommy Bahama",
+      "price": 98.50,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/4.png",
+      "rating": 4.7,
+      "reviewCount": 49
+    }
+  ],
+  "womenProductsLower": [
+    {
+      "id": "women-prod-5",
+      "name": "Full-Zip Sweatshirt",
+      "shortName": "Full-Zip Sweatshirt",
+      "brand": "Tommy Bahama",
+      "price": 148.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/5.png",
+      "rating": 4.9,
+      "reviewCount": 55
+    },
+    {
+      "id": "women-prod-6",
+      "name": "Stripe Crewneck Sweater",
+      "shortName": "Stripe Crewneck Swe...",
+      "brand": "Tommy Bahama",
+      "price": 148.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/6.png",
+      "rating": 4.8,
+      "reviewCount": 61
+    },
+    {
+      "id": "women-prod-7",
+      "name": "Palm-A-Dore Breezy Dress",
+      "shortName": "Palm-A-Dore Breezy...",
+      "brand": "Tommy Bahama",
+      "price": 178.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/7.png",
+      "rating": 5.0,
+      "reviewCount": 42
+    },
+    {
+      "id": "women-prod-8",
+      "name": "Raw-Edge Linen Jacket",
+      "shortName": "Raw-Edge Linen Jacket",
+      "brand": "Tommy Bahama",
+      "price": 198.00,
+      "currency": "USD",
+      "badge": "New",
+      "image": "/Fashion/Women/8.png",
+      "rating": 4.9,
+      "reviewCount": 39
+    }
+  ],
+  "middleBanner": {
+    "title": "Bags That Carry the Look",
+    "image": "/fashion/Middle_Fashion/image.png",
+    "ctaLink": "#bags"
+  }
+}

@@ -10,6 +10,7 @@ export interface HeroBanner {
   secondaryCtaLink?: string;
   discountBadge?: string;
   image: string;
+  video?: string;
   backgroundColor?: string;
   textColor?: string;
 }

@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Default / Bahamas Kanoo Theme (Signature Turquoise / Teal) */
-  --brand-primary: #008477;
-  --brand-secondary: #00a896;
-  --brand-hover: #006e63;
-  --brand-light: #e6f7f5;
+  /* Default / Bahamas Kanoo Theme (Signature Turquoise / Teal from Figma) */
+  --brand-primary: #08495b;
+  --brand-secondary: #1bcecb;
+  --brand-hover: #063948;
+  --brand-light: #e6f9f9;
 
-  --header-bg-from: #004e49;
-  --header-bg-via: #006e67;
-  --header-bg-to: #009688;
+  --header-bg-from: #08495b;
+  --header-bg-via: #118491;
+  --header-bg-to: #1bcecb;
 
   --text-primary: #111827;
   --text-secondary: #4b5563;
@@ -28,92 +30,48 @@
   --radius-lg: 20px;
 }
 
-/* India Theme (Saffron & Warm Rich Obsidian) */
-[data-theme="india"] {
-  --brand-primary: #ff671f;
-  --brand-secondary: #ff9933;
-  --brand-hover: #e05a1b;
-  --brand-light: #fff2e8;
-  --header-bg-from: #381a05;
-  --header-bg-via: #241103;
-  --header-bg-to: #120901;
-}
-
-/* Trinidad & Tobago Theme (Dark Wine & Crimson) */
-[data-theme="trinidad"] {
-  --brand-primary: #be123c;
-  --brand-secondary: #e11d48;
-  --brand-hover: #9f1239;
-  --brand-light: #ffe4e6;
-  --header-bg-from: #180508;
-  --header-bg-via: #22070c;
-  --header-bg-to: #2a090f;
-}
-
-/* Bahamas Theme (Teal & Aquamarine) */
+/* Bahamas Theme (Default - Figma: #08495B to #1BCECB) */
 [data-theme="bahamas"] {
-  --brand-primary: #008477;
-  --brand-secondary: #00a896;
-  --brand-hover: #006e63;
-  --brand-light: #e6f7f5;
-  --header-bg-from: #002b27;
-  --header-bg-via: #003b35;
-  --header-bg-to: #004d46;
+  --brand-primary: #08495b;
+  --brand-secondary: #1bcecb;
+  --brand-hover: #063948;
+  --brand-light: #e6f9f9;
+  --header-bg-from: #08495b;
+  --header-bg-via: #118491;
+  --header-bg-to: #1bcecb;
 }
 
-/* Guyana Theme (Emerald & Gold) */
-[data-theme="guyana"] {
-  --brand-primary: #059669;
-  --brand-secondary: #f59e0b;
-  --brand-hover: #047857;
-  --brand-light: #ecfdf5;
-  --header-bg-from: #022417;
-  --header-bg-via: #043322;
-  --header-bg-to: #06452e;
+/* Trinidad & Tobago Theme (Figma: #1C0000 to #D00B5B) */
+[data-theme="trinidad"] {
+  --brand-primary: #d00b5b;
+  --brand-secondary: #e11d48;
+  --brand-hover: #a80848;
+  --brand-light: #fce8f0;
+  --header-bg-from: #1c0000;
+  --header-bg-via: #76052d;
+  --header-bg-to: #d00b5b;
 }
 
-/* Suriname Theme (Crimson & Amber) */
-[data-theme="suriname"] {
-  --brand-primary: #dc2626;
-  --brand-secondary: #f59e0b;
-  --brand-hover: #b91c1c;
-  --brand-light: #fef2f2;
-  --header-bg-from: #210808;
-  --header-bg-via: #300c0c;
-  --header-bg-to: #401010;
-}
-
-/* Barbados Theme (Royal Blue & Gold) */
-[data-theme="barbados"] {
-  --brand-primary: #1d4ed8;
-  --brand-secondary: #fbbf24;
-  --brand-hover: #1e40af;
-  --brand-light: #eff6ff;
-  --header-bg-from: #07152e;
-  --header-bg-via: #0c2145;
-  --header-bg-to: #102b59;
-}
-
-/* Jamaica Theme (Forest Green & Gold) */
+/* Jamaica Theme (Figma: #0D2102 to #D2EDF4) */
 [data-theme="jamaica"] {
-  --brand-primary: #15803d;
-  --brand-secondary: #eab308;
-  --brand-hover: #166534;
-  --brand-light: #f0fdf4;
-  --header-bg-from: #0d1f07;
-  --header-bg-via: #162e0d;
-  --header-bg-to: #1e3d12;
+  --brand-primary: #0d2102;
+  --brand-secondary: #15803d;
+  --brand-hover: #1b4505;
+  --brand-light: #f0fbf7;
+  --header-bg-from: #0d2102;
+  --header-bg-via: #6f877b;
+  --header-bg-to: #d2edf4;
 }
 
-/* Global / KanooX Default Theme */
-[data-theme="default"] {
-  --brand-primary: #5154b6;
-  --brand-secondary: #818cf8;
-  --brand-hover: #43459d;
-  --brand-light: #eef2ff;
-  --header-bg-from: #111026;
-  --header-bg-via: #1a1838;
-  --header-bg-to: #24224c;
+/* Guyana Theme (Figma: #220032 to #C60BD0) */
+[data-theme="guyana"] {
+  --brand-primary: #c60bd0;
+  --brand-secondary: #e040eb;
+  --brand-hover: #9e09a6;
+  --brand-light: #fcedfe;
+  --header-bg-from: #220032;
+  --header-bg-via: #740581;
+  --header-bg-to: #c60bd0;
 }
 
 @layer base {

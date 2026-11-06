@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import { X } from "lucide-react";
+import Image from "next/image";
 import categoriesData from "@/data/categories.json";
 import Category3DIcon from "@/components/home/Category3DIcon";
 import { useTheme } from "@/context/ThemeContext";
@@ -131,56 +131,36 @@ export default function CategorySection({
             <button
               key={cat.id}
               onClick={() => handleSelect(cat.id)}
-              style={{
-                backgroundColor: isSelected ? "rgba(255, 255, 255, 0.14)" : currentCountry.cardBgCss,
-                borderColor: isSelected ? "rgba(255, 255, 255, 0.45)" : currentCountry.cardBorderCss,
-              }}
-              className={`flex-1 min-w-[72px] sm:min-w-[80px] md:min-w-[88px] lg:min-w-[96px] xl:min-w-[104px] flex flex-col items-center justify-between transition-all duration-200 group text-center cursor-pointer border ${
+              className={`flex-1 min-w-[76px] sm:min-w-[84px] md:min-w-[92px] lg:min-w-[98px] xl:min-w-[104px] flex flex-col items-center justify-between transition-all duration-200 group text-center cursor-pointer border rounded-2xl backdrop-blur-md shadow-sm h-[88px] sm:h-[96px] md:h-[104px] lg:h-[110px] pt-2 pb-2 px-1.5 sm:px-2 relative ${
                 isSelected
-                  ? "shadow-md ring-1 ring-white/30 scale-[1.02]"
-                  : "hover:scale-[1.02] hover:bg-white/[0.08] hover:border-white/20"
-              } ${
-                isCompact
-                  ? "h-[78px] sm:h-[84px] md:h-[92px] lg:h-[98px] xl:h-[102px] p-1.5 sm:p-2 rounded-2xl"
-                  : "h-[90px] sm:h-[100px] md:h-[114px] lg:h-[128px] xl:h-[136px] p-2 sm:p-2.5 lg:p-3 rounded-2xl lg:rounded-3xl"
-              } backdrop-blur-lg relative shadow-sm`}
+                  ? "bg-black/40 border-white/40 ring-1 ring-white/30 shadow-lg scale-[1.02]"
+                  : "bg-white/[0.18] border-white/20 hover:scale-[1.03] hover:bg-black/35 hover:border-white/35"
+              }`}
               title={isSelected ? `Click to clear filter` : `Filter by ${cat.name}`}
             >
-              {/* Subtle mini cross button on selected category */}
-              {isSelected && (
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    clearCategory();
-                  }}
-                  className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-white/95 text-slate-800 flex items-center justify-center shadow-md hover:bg-red-500 hover:text-white transition-colors border border-black/15 z-20"
-                  title="Clear filter"
-                >
-                  <X className="w-2.5 h-2.5 stroke-[2.5]" />
-                </span>
-              )}
-
-              {/* 3D Category Icon with subtle hover lift */}
-              <div className="flex-1 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200 pointer-events-none">
-                <Category3DIcon
-                  type={cat.icon || cat.id}
-                  className={
-                    isCompact
-                      ? "w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 drop-shadow-md"
-                      : "w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 drop-shadow-md"
-                  }
-                />
+              {/* 3D Category Icon with generous size matching Figma reference */}
+              <div className="flex-1 flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200 pointer-events-none w-full">
+                {cat.image ? (
+                  <div className="relative w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13 lg:w-14 lg:h-14 xl:w-[60px] xl:h-[60px]">
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      className="object-contain drop-shadow-md"
+                      sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
+                      priority
+                    />
+                  </div>
+                ) : (
+                  <Category3DIcon
+                    type={cat.icon || cat.id}
+                    className="w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13 lg:w-14 lg:h-14 xl:w-16 xl:h-16 drop-shadow-md"
+                  />
+                )}
               </div>
 
               {/* Text Label - Multi-line supported with high-contrast legibility */}
-              <span
-                style={{ color: isSelected ? "#FFFFFF" : currentCountry.textMutedColor }}
-                className={`font-semibold leading-[1.15] text-center max-w-full px-0.5 line-clamp-2 mt-1 transition-colors group-hover:text-white pointer-events-none ${
-                  isCompact
-                    ? "text-[10px] sm:text-[11px] lg:text-xs"
-                    : "text-[11px] sm:text-xs lg:text-sm"
-                }`}
-              >
+              <span className="font-semibold text-white leading-[1.15] text-center max-w-full px-0.5 line-clamp-2 mt-0.5 text-[10.5px] sm:text-[11.5px] lg:text-xs tracking-tight pointer-events-none">
                 {cat.name}
               </span>
             </button>
