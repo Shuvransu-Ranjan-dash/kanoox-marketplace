@@ -496,7 +496,7 @@ export default function Header({
                     className="flex items-center justify-center text-white/90 hover:text-white transition-opacity active:scale-95 cursor-pointer"
                   >
                     <Image
-                      src="/icons/home.png"
+                      src="/icons/Home.png"
                       alt="Home"
                       width={20}
                       height={20}
@@ -514,7 +514,7 @@ export default function Header({
                     aria-label="Location Settings"
                   >
                     <Image
-                      src="/icons/location.png"
+                      src="/icons/Location.png"
                       alt="Location"
                       width={20}
                       height={20}

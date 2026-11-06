@@ -11,7 +11,7 @@ interface FashionMiddleBannerProps {
 }
 
 export default function FashionMiddleBanner({
-  image = "/fashion/Middle_Fashion/image.png",
+  image = "/Fashion/Middle_Fashion/image.png",
   title = "Bags That Carry the Look",
   href = "#bags",
 }: FashionMiddleBannerProps) {

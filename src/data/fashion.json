@@ -17,42 +17,42 @@
     {
       "id": "tommy-bahama",
       "name": "Tommy Bahama",
-      "logo": "/fashion/Brands/Tommy_Bahamas.png"
+      "logo": "/Fashion/Brands/Tommy_Bahamas.png"
     },
     {
       "id": "bahari",
       "name": "Bahari Bahamas",
-      "logo": "/fashion/Brands/Bahari.png"
+      "logo": "/Fashion/Brands/Bahari.png"
     },
     {
       "id": "versace",
       "name": "Versace",
-      "logo": "/fashion/Brands/Versence.png"
+      "logo": "/Fashion/Brands/Versence.png"
     },
     {
       "id": "kf",
       "name": "KF",
-      "logo": "/fashion/Brands/KF.png"
+      "logo": "/Fashion/Brands/KF.png"
     },
     {
       "id": "del-sol",
       "name": "Del Sol",
-      "logo": "/fashion/Brands/DelSol.png"
+      "logo": "/Fashion/Brands/DelSol.png"
     },
     {
       "id": "heatwave",
       "name": "HeatWave",
-      "logo": "/fashion/Brands/HeatWave.png"
+      "logo": "/Fashion/Brands/HeatWave.png"
     },
     {
       "id": "carlo",
       "name": "Carlo",
-      "logo": "/fashion/Brands/Carlo.png"
+      "logo": "/Fashion/Brands/Carlo.png"
     },
     {
       "id": "etsy",
       "name": "Etsy Bahamas",
-      "logo": "/fashion/Brands/Etsy.png"
+      "logo": "/Fashion/Brands/Etsy.png"
     }
   ],
   "menHeroBanners": [
@@ -65,7 +65,7 @@
       "ctaText": "Shop Collection",
       "ctaLink": "#products",
       "discountBadge": "NEW",
-      "image": "/fashion/Banner_Men/1.png"
+      "image": "/Fashion/Banner_Men/1.png"
     },
     {
       "id": "banner-men-2",
@@ -76,7 +76,7 @@
       "ctaText": "Shop Now",
       "ctaLink": "#products",
       "discountBadge": "NEW",
-      "image": "/fashion/Banner_Men/2.png"
+      "image": "/Fashion/Banner_Men/2.png"
     },
     {
       "id": "banner-men-3",
@@ -87,7 +87,7 @@
       "ctaText": "Explore Deals",
       "ctaLink": "#products",
       "discountBadge": "20% OFF",
-      "image": "/fashion/Banner_Men/3.png"
+      "image": "/Fashion/Banner_Men/3.png"
     }
   ],
   "womenHeroBanners": [
@@ -126,7 +126,7 @@
       "price": 140.00,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/1.png",
+      "image": "/Fashion/Men/1.png",
       "rating": 4.9,
       "reviewCount": 42
     },
@@ -138,7 +138,7 @@
       "price": 195.00,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/2.png",
+      "image": "/Fashion/Men/2.png",
       "rating": 4.8,
       "reviewCount": 38
     },
@@ -150,7 +150,7 @@
       "price": 395.00,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/3.png",
+      "image": "/Fashion/Men/3.png",
       "rating": 5.0,
       "reviewCount": 29
     },
@@ -162,7 +162,7 @@
       "price": 130.80,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/4.png",
+      "image": "/Fashion/Men/4.png",
       "rating": 4.7,
       "reviewCount": 51
     }
@@ -176,7 +176,7 @@
       "price": 55.00,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/5.png",
+      "image": "/Fashion/Men/5.png",
       "rating": 4.9,
       "reviewCount": 64
     },
@@ -188,7 +188,7 @@
       "price": 54.00,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/6.png",
+      "image": "/Fashion/Men/6.png",
       "rating": 4.8,
       "reviewCount": 83
     },
@@ -200,7 +200,7 @@
       "price": 150.80,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/7.png",
+      "image": "/Fashion/Men/7.png",
       "rating": 4.9,
       "reviewCount": 47
     },
@@ -212,7 +212,7 @@
       "price": 175.80,
       "currency": "USD",
       "badge": "New",
-      "image": "/fashion/Men/8.png",
+      "image": "/Fashion/Men/8.png",
       "rating": 5.0,
       "reviewCount": 35
     }
@@ -419,7 +419,7 @@
   ],
   "middleBanner": {
     "title": "Bags That Carry the Look",
-    "image": "/fashion/Middle_Fashion/image.png",
+    "image": "/Fashion/Middle_Fashion/image.png",
     "ctaLink": "#bags"
   }
 }
