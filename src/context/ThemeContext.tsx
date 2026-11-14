@@ -18,20 +18,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [currentCountry, setCurrentCountry] = useState<CountryTheme>(DEFAULT_COUNTRY);
 
   useEffect(() => {
-    try {
-      const savedCountryId = localStorage.getItem("kanoox_country_theme");
-      if (savedCountryId) {
-        const found = COUNTRIES.find((c) => c.id === savedCountryId);
-        if (found) {
-          setCurrentCountry(found);
-          applyTheme(found);
-          return;
-        }
-      }
-    } catch {
-      // LocalStorage unavailable
-    }
-    // Default to The Bahamas
+    // Always default to The Bahamas on page load
     setCurrentCountry(DEFAULT_COUNTRY);
     applyTheme(DEFAULT_COUNTRY);
   }, []);
