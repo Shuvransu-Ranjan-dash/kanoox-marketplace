@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import navigationData from "@/data/navigation.json";
 import { formatPrice } from "@/utils/formatPrice";
-import { useTheme } from "@/context/ThemeContext";
 
 const ICON_MAP: Record<string, React.ReactNode> = {
   Laptop: <Laptop className="w-4 h-4" />,
@@ -36,7 +35,6 @@ interface MegaMenuProps {
 export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   const { megaMenu } = navigationData;
   const [activeTab, setActiveTab] = useState(megaMenu[0]?.id || "");
-  const { currentCountry } = useTheme();
 
   if (!isOpen) return null;
 
@@ -131,7 +129,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                 {activeCategory.featuredProduct.name}
               </h5>
               <p className="text-sm font-bold text-brand-primary mt-1">
-                {formatPrice(activeCategory.featuredProduct.price, currentCountry.currency)}
+                {formatPrice(activeCategory.featuredProduct.price)}
               </p>
             </div>
 

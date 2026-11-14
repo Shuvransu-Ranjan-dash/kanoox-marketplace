@@ -126,7 +126,6 @@ export default function ProductCard({ product, className }: ProductCardProps) {
           <ProductPrice
             price={product.price}
             originalPrice={product.originalPrice}
-            currency={product.currency}
             size="md"
           />
 

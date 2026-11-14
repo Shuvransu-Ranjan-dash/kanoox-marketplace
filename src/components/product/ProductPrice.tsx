@@ -2,13 +2,11 @@
 
 import React from "react";
 import { formatPrice } from "@/utils/formatPrice";
-import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/utils/helpers";
 
 interface ProductPriceProps {
   price: number;
   originalPrice?: number;
-  currency?: string;
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -16,14 +14,9 @@ interface ProductPriceProps {
 export default function ProductPrice({
   price,
   originalPrice,
-  currency,
   size = "md",
   className,
 }: ProductPriceProps) {
-  const { currentCountry } = useTheme();
-  // Always synchronize with the active country's currency and exchange rate
-  const activeCurrency = currentCountry.currency;
-
   const sizeClasses = {
     sm: "text-xs",
     md: "text-sm sm:text-base",
@@ -35,12 +28,12 @@ export default function ProductPrice({
   return (
     <div className={cn("flex items-baseline flex-wrap gap-1.5", className)}>
       <span className={cn("font-bold text-brand-primary tracking-tight", sizeClasses[size])}>
-        {formatPrice(price, activeCurrency)}
+        {formatPrice(price)}
       </span>
 
       {hasDiscount && (
         <span className="text-xs text-content-secondary line-through opacity-70">
-          {formatPrice(originalPrice, activeCurrency)}
+          {formatPrice(originalPrice)}
         </span>
       )}
     </div>

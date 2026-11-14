@@ -2,8 +2,6 @@ export interface CountryTheme {
   id: string;
   name: string;
   flag: string;
-  currency: string;
-  currencySymbol: string;
   primaryColor: string;
   themeClass: string;
   deliveryCity: string;
@@ -20,8 +18,6 @@ export const COUNTRIES: CountryTheme[] = [
     id: "bahamas",
     name: "The Bahamas",
     flag: "🇧🇸",
-    currency: "BSD",
-    currencySymbol: "B$",
     primaryColor: "#08495B",
     themeClass: "bahamas",
     deliveryCity: "Nassau, Bahamas",
@@ -36,8 +32,6 @@ export const COUNTRIES: CountryTheme[] = [
     id: "trinidad",
     name: "Trinidad & Tobago",
     flag: "🇹🇹",
-    currency: "TTD",
-    currencySymbol: "TT$",
     primaryColor: "#D00B5B",
     themeClass: "trinidad",
     deliveryCity: "Port of Spain, Trinidad & Tobago",
@@ -52,8 +46,6 @@ export const COUNTRIES: CountryTheme[] = [
     id: "jamaica",
     name: "Jamaica",
     flag: "🇯🇲",
-    currency: "JMD",
-    currencySymbol: "J$",
     primaryColor: "#0D2102",
     themeClass: "jamaica",
     deliveryCity: "Kingston, Jamaica",
@@ -68,8 +60,6 @@ export const COUNTRIES: CountryTheme[] = [
     id: "guyana",
     name: "Guyana",
     flag: "🇬🇾",
-    currency: "GYD",
-    currencySymbol: "GYD $",
     primaryColor: "#C60BD0",
     themeClass: "guyana",
     deliveryCity: "Georgetown, Guyana",

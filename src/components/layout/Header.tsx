@@ -468,14 +468,14 @@ export default function Header({
                 </div>
               </div>
 
-              {/* Center: Kanoo Folded Ribbon 'X' Logo */}
+              {/* Center: Kanoo Logo */}
               <Link
                 href="/"
                 onClick={handleHomeClick}
                 className="flex items-center justify-center hover:scale-105 transition-transform flex-shrink-0 px-1"
                 aria-label="Kanoo Home"
               >
-                <KanooLogo className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 drop-shadow-md" />
+                <KanooLogo className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 drop-shadow-md" />
               </Link>
 
               {/* Right: Quick Action Controls (Combined [Home + Location] Pill & Standalone Notification Bell) */}
@@ -692,7 +692,7 @@ export default function Header({
                           </div>
                           <div className="text-right flex-shrink-0">
                             <span className="text-xs sm:text-sm font-extrabold text-emerald-400">
-                              {formatPrice(product.price, currentCountry.currency)}
+                              {formatPrice(product.price)}
                             </span>
                           </div>
                         </Link>
@@ -707,14 +707,14 @@ export default function Header({
               )}
             </div>
 
-            {/* Country Changer Pill [ ⌄ 🇹🇹 ] */}
+            {/* Country Changer Pill [ ⌄ 🇧🇸 ] */}
             <div className="relative z-30" ref={countryContainerRef}>
               <button
                 type="button"
                 onClick={() => setIsCountryModalOpen((prev) => !prev)}
                 style={{ backgroundColor: searchBgCss, borderColor: cardBorderCss }}
                 className="h-12 px-3 sm:px-3.5 border rounded-2xl flex items-center gap-2 text-white shadow-sm transition-all flex-shrink-0 active:scale-95 cursor-pointer"
-                title={`Active Country: ${currentCountry.name} (${currentCountry.currency})`}
+                title={`Active Country: ${currentCountry.name}`}
                 aria-label="Select Country and Theme"
               >
                 <ChevronDown className={`w-4 h-4 text-white/70 transition-transform duration-200 ${isCountryModalOpen ? "rotate-180" : ""}`} />
@@ -725,62 +725,55 @@ export default function Header({
               {isCountryModalOpen && (
                 <div
                   ref={countryModalRef}
-                  className="absolute right-0 top-full mt-2 w-72 sm:w-80 bg-slate-900 text-white rounded-2xl shadow-2xl border border-white/20 overflow-hidden z-50"
+                  className="absolute right-0 top-full mt-2.5 w-72 sm:w-80 bg-white rounded-[26px] shadow-2xl p-5 border border-gray-100 z-50 select-none animate-in fade-in zoom-in-95 duration-150"
                 >
-                  <div className="p-3.5 bg-black/40 border-b border-white/10 flex items-center justify-between">
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-                        Select Country & Theme
-                      </h4>
-                      <p className="text-[11px] text-white/60">
-                        Changes background color & currency
-                      </p>
-                    </div>
+                  {/* Modal Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 tracking-tight">
+                      Select Country
+                    </h3>
                     <button
+                      type="button"
                       onClick={() => setIsCountryModalOpen(false)}
-                      className="p-1 text-white/50 hover:text-white rounded-lg"
+                      className="w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors"
+                      aria-label="Close"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-4 h-4 stroke-[2.5]" />
                     </button>
                   </div>
 
-                  <div className="p-2 space-y-1 max-h-72 overflow-y-auto">
+                  {/* Country List matching UI */}
+                  <div className="space-y-3">
                     {availableCountries.map((c) => {
                       const isSelected = currentCountry.id === c.id;
+                      const displayName =
+                        c.id === "bahamas"
+                          ? "Bahamas"
+                          : c.id === "trinidad"
+                          ? "Trinidad and Tobago"
+                          : c.name;
+
                       return (
                         <button
                           key={c.id}
+                          type="button"
                           onClick={() => {
                             setCountry(c.id);
                             setIsCountryModalOpen(false);
                           }}
-                          className={`w-full p-2.5 rounded-xl flex items-center justify-between text-left transition-all ${
+                          className={`w-full flex items-center gap-3.5 px-3 py-2 rounded-full transition-all text-left ${
                             isSelected
-                              ? "bg-white/20 border border-white/40 text-white font-bold shadow-sm"
-                              : "hover:bg-white/10 text-white/80 hover:text-white"
+                              ? "bg-[#00B4B6] text-white font-semibold shadow-sm"
+                              : "bg-[#F3F4F6] hover:bg-[#E5E7EB] text-gray-800 font-medium"
                           }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <CountryFlag countryId={c.id} className="w-7 h-7" />
-                            <div>
-                              <p className="text-xs font-bold leading-tight">{c.name}</p>
-                              <p className="text-[10px] text-white/60">{c.deliveryCity}</p>
-                            </div>
+                          <div className={`w-8 h-8 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center ${isSelected ? "ring-2 ring-white" : ""}`}>
+                            <CountryFlag countryId={c.id} className="w-8 h-8" />
                           </div>
-
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-mono font-bold bg-white/10 px-2 py-0.5 rounded border border-white/20 text-white">
-                              {c.currency}
-                            </span>
-                            {isSelected && <Check className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
-                          </div>
+                          <span className="text-sm tracking-tight">{displayName}</span>
                         </button>
                       );
                     })}
-                  </div>
-
-                  <div className="p-2.5 bg-black/40 border-t border-white/10 text-[11px] text-white/70 text-center">
-                    Active Delivery: <strong className="text-white">{currentCountry.deliveryCity}</strong>
                   </div>
                 </div>
               )}

@@ -10,7 +10,6 @@ export interface FashionProduct {
   shortName?: string;
   brand?: string;
   price: number;
-  currency?: string;
   badge?: string;
   image: string;
   rating?: number;

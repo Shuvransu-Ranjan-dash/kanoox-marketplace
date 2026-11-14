@@ -19,6 +19,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { useFavourites } from "@/hooks/useFavourites";
 import categoriesData from "@/data/categories.json";
 import navigationData from "@/data/navigation.json";
+import KanooLogo from "@/components/ui/KanooLogo";
 
 interface MobileHeaderProps {
   onSearchClick: () => void;
@@ -43,13 +44,11 @@ export default function MobileHeader({ onSearchClick }: MobileHeaderProps) {
           <Menu className="w-6 h-6" />
         </button>
 
-        {/* KanooX Logo */}
-        <Link href="/" className="flex items-center space-x-1.5">
+        {/* Kanoo Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <KanooLogo className="w-8 h-8" />
           <span className="text-xl font-black tracking-tight text-brand-primary">
             Kanoo<span className="text-accent-yellow">X</span>
-          </span>
-          <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-light text-brand-primary px-1.5 py-0.5 rounded">
-            GY
           </span>
         </Link>
 
@@ -116,7 +115,7 @@ export default function MobileHeader({ onSearchClick }: MobileHeaderProps) {
                 </button>
               </div>
 
-              {/* Country & Currency Switcher inside Drawer */}
+              {/* Country Switcher inside Drawer */}
               <div className="p-4 bg-gray-50 border-b border-border">
                 <label className="text-xs font-semibold text-content-secondary flex items-center gap-1.5 mb-2">
                   <Globe className="w-3.5 h-3.5 text-brand-primary" />
