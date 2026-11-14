@@ -824,7 +824,7 @@ export default function Header({
               }}
               className="pt-1 sm:pt-2"
             >
-              <BannerCarousel banners={displayedBanners} />
+              <BannerCarousel key={`${countryId}-${isFashion ? activeFashionTab : "market"}`} banners={displayedBanners} />
             </div>
           </div>
         )}

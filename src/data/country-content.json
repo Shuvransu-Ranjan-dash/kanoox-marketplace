@@ -74,7 +74,7 @@
         "secondaryCtaText": "View All",
         "secondaryCtaLink": "#deals",
         "discountBadge": "NEW",
-        "image": "/images/Banner/1st.png",
+        "image": "/images/Banner/4.png",
         "theme": "festive-pink"
       },
       {
@@ -88,7 +88,7 @@
         "secondaryCtaText": "View Deals",
         "secondaryCtaLink": "#deals",
         "discountBadge": "SALE",
-        "image": "/images/Banner/2nd.png",
+        "image": "/images/Banner/3rd.png",
         "theme": "tropical-green"
       },
       {
@@ -102,7 +102,7 @@
         "secondaryCtaText": "View Deals",
         "secondaryCtaLink": "#deals",
         "discountBadge": "35% OFF",
-        "image": "/images/Banner/3rd.png",
+        "image": "/images/Banner/2nd.png",
         "theme": "tech-indigo"
       }
     ],
@@ -136,7 +136,7 @@
         "secondaryCtaText": "View Restaurants",
         "secondaryCtaLink": "#dine-out",
         "discountBadge": "HOT",
-        "image": "/images/Banner/1st.png",
+        "image": "/images/Banner/5.png",
         "theme": "tropical-green"
       },
       {
@@ -150,7 +150,7 @@
         "secondaryCtaText": "View Deals",
         "secondaryCtaLink": "#deals",
         "discountBadge": "20% OFF",
-        "image": "/images/Banner/2nd.png",
+        "image": "/images/Banner/4.png",
         "theme": "tropical-green"
       },
       {
@@ -198,7 +198,7 @@
         "secondaryCtaText": "View All Deals",
         "secondaryCtaLink": "#deals",
         "discountBadge": "SALE",
-        "image": "/images/Banner/1st.png",
+        "image": "/images/Banner/6.png",
         "theme": "festive-pink"
       },
       {
@@ -212,7 +212,7 @@
         "secondaryCtaText": "View Deals",
         "secondaryCtaLink": "#deals",
         "discountBadge": "35% OFF",
-        "image": "/images/Banner/2nd.png",
+        "image": "/images/Banner/5.png",
         "theme": "tropical-green"
       },
       {
@@ -226,7 +226,7 @@
         "secondaryCtaText": "View Specs",
         "secondaryCtaLink": "#details",
         "discountBadge": "NEW",
-        "image": "/images/Banner/3rd.png",
+        "image": "/images/Banner/4.png",
         "theme": "tech-indigo"
       }
     ],
